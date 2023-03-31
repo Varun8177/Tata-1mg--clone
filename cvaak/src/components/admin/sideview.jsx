@@ -62,6 +62,7 @@ const Sidebar = () => {
                     <AiFillHome /> <Text>Dashboard</Text>
                   </Grid>
                   <br />
+                  <hr />
                   <Grid
                     cursor={"pointer"}
                     w={"70%"}
@@ -74,6 +75,7 @@ const Sidebar = () => {
                     <BsClipboardData /> Products
                   </Grid>
                   <br />
+                  <hr />
                   <Grid
                     w={"70%"}
                     templateColumns={"50px auto"}
@@ -84,8 +86,10 @@ const Sidebar = () => {
                     }}
                   >
                     <FiActivity /> Activity
+
                   </Grid>
                   <br />
+                  <hr />
                   <Grid
                     w={"70%"}
                     templateColumns={"50px auto"}
@@ -98,6 +102,7 @@ const Sidebar = () => {
                     <SiSketchfab /> Admins
                   </Grid>
                   <br />
+                  <hr />
                   <Grid
                     w={"70%"}
                     templateColumns={"50px auto"}
@@ -138,6 +143,7 @@ const Sidebar = () => {
                     </Grid>
                   </Tooltip>
                   <br />
+                  <hr />
                   <Tooltip label="Product Details" placement="right">
                     <Grid
                       cursor={"pointer"}
@@ -149,6 +155,7 @@ const Sidebar = () => {
                     </Grid>
                   </Tooltip>
                   <br />
+                  <hr />
                   <Tooltip label="Activity" placement="right">
                     <Grid
                       w={"100%"}
@@ -160,6 +167,21 @@ const Sidebar = () => {
                     </Grid>
                   </Tooltip>
                   <br />
+                  <hr />
+                  <Tooltip label="Admins" placement="right">
+                    <Grid
+                      cursor={"pointer"}
+                      w={"100%"}
+                      templateColumns={"50px"}
+                      alignItems={"center"}
+                    >
+                      <SiSketchfab style={{ margin: "auto" }} size={"20"} />
+                    </Grid>
+                  </Tooltip>
+
+                  <br />
+                  <hr />
+
                   <Tooltip label="settings" placement="right">
                     <Grid
                       cursor={"pointer"}
