@@ -17,6 +17,7 @@ import {
   Show,
   Text,
 } from "@chakra-ui/react";
+//import Link from 'next/link'
 // import { auth } from "config/firebase";
 // import { signOut } from "firebase/auth";
 import Image from "next/image";
@@ -238,9 +239,9 @@ const NavTopSection = () => {
                   {/* Welcome {userName} */}
                   Welcome
                 </MenuItem>
-                <MenuItem onClick={() => router.push("/profile")}>
-                  View Profile
-                </MenuItem>
+                
+                <Link href="/profile">  View Profile</Link>
+              
                 <MenuItem>My orders</MenuItem>
                 <MenuItem>
                   Previously Ordered Items{" "}
