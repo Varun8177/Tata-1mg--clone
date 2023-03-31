@@ -1,5 +1,5 @@
-import Boxes from "@/components/adminPanel/Boxes";
-import Sidebar from "@/components/adminPanel/Sidebar";
+import Boxes from "@/components/admin/Boxes"
+import Sidebar from "@/components/admin/Sideview";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Bar, Line } from "react-chartjs-2";

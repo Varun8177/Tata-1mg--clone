@@ -16,8 +16,8 @@ import {
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
-import Boxes from "@/components/adminPanel/Boxes";
-import Sidebar from "@/components/adminPanel/Sidebar";
+import Boxes from "@/components/admin/Boxes";
+import Sidebar from "@/components/admin/Sideview";
 import React, { useEffect } from "react";
 import { BsGithub } from "react-icons/bs";
 import { ChevronDownIcon } from "@chakra-ui/icons";
