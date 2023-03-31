@@ -69,10 +69,31 @@ productRouter.get("/", async (req, res) => {
     if (query.category) {
         categoryQuery["category"] = query.category
     }
-    console.log(categoryQuery)
+    let sortQuery = {}
+    const discountQuery = {}
+    if (query.sortBy === 'price') {
+        if (query.order === "asc") {
+            sortQuery = { price: 1 }
+        } else if (query.order === "des") {
+            sortQuery = { price: -1 }
+        }
+    } else if (query.sortBy === 'rating') {
+        if (query.order === "asc") {
+            sortQuery = { rating: 1 }
+        } else if (query.order === "des") {
+            sortQuery = { rating: -1 }
+        }
+    }
 
+    if (query.discount) {
+        const [greaterThanEqual, lessThanEqual] = query.discount.split("-")
+        discountQuery["discount-percent"] = {
+            $gte: `${greaterThanEqual}%`,
+            $lte: `${lessThanEqual}%`
+        }
+    }
     try {
-        const notes = await ProductModel.find({ $and: [categoryQuery] })
+        const notes = await ProductModel.find({ $and: [categoryQuery, discountQuery] }).sort(sortQuery)
         res.status(200).send(notes)
     } catch (error) {
         res.status(400).send({
