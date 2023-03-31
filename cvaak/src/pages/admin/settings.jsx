@@ -1,8 +1,8 @@
-import Sidebar from "@/components/adminPanel/Sidebar";
-import useValueChange from "@/components/customHooks/useValueChange";
-import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
+import Sidebar from "@/components/admin/Sideview";
+// import useValueChange from "@/components/customHooks/useValueChange";
+// import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import { GetAdminDataRequest } from "@/redux/admin/admin.action";
-import { userLogout, userStatusUpdate } from "@/redux/auth/action";
+// import { userLogout, userStatusUpdate } from "@/redux/auth/action";
 import { EditIcon } from "@chakra-ui/icons";
 import {
   Avatar,
@@ -15,8 +15,8 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { auth } from "config/firebase";
-import { signOut } from "firebase/auth";
+// import { auth } from "config/firebase";
+// import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
@@ -25,7 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const AdminSettings = () => {
   const data = useSelector((store) => store.AdminReducer.Admins);
-  const { isAuth, userName } = useSelector((state) => state.authReducer);
+  // const { isAuth, userName } = useSelector((state) => state.authReducer);
   const [domLoaded, setDomLoaded] = useState(false);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);

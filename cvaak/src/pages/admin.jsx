@@ -2,7 +2,7 @@ import Sidebar from "@/components/admin/sideview"
 import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Boxes from "@/components/admin/Boxes";
-// import { Bar, Pie } from "react-chartjs-2";
+import { Bar, Pie } from "react-chartjs-2";
 // import { Chart as ChartJS } from "chart.js/auto";
 // import { useDispatch, useSelector } from "react-redux";
 // import {
