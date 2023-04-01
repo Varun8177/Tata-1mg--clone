@@ -38,7 +38,7 @@ export default function SignUpCard() {
   const [showPassword, setShowPassword] = useState(false);
   const [load, setLoad] = useState(false);
   const toast = useToast();
-  const handleSignUp = async () => {
+  const handleSignUp = () => {
     setLoad(true);
     dispatch(
       userRegister({ name, email: registerEmail, password: registerPass })

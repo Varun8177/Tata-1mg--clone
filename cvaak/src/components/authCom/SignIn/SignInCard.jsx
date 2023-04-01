@@ -20,32 +20,31 @@ import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import SignInCarousel from "./SignInCarousel";
 import { useDispatch, useSelector } from "react-redux";
-// import { auth } from "config/firebase";
-// import { signInWithEmailAndPassword } from "firebase/auth";
 import { userLogin } from "@/redux/auth/action";
 
 export default function SignInCard() {
   const { isAuth, userName } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
-  console.log(isAuth, userName);
   const toast = useToast();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPass, setLoginPass] = useState("");
   const [load, setLoad] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = async () => {
+  const handleLogin = () => {
     setLoad(true);
     try {
-      const res = await signInWithEmailAndPassword(auth, loginEmail, loginPass);
-      toast({
-        title: "Signup Successfull",
-        description: `welcome back, ${user.displayName}`,
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
-      dispatch(userLogin(res.user.displayName));
+      dispatch(userLogin({ email: loginEmail, password: loginPass })).then(
+        () => {
+          toast({
+            title: "Signup Successfull",
+            description: `welcome back`,
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
+        }
+      );
     } catch (e) {
       console.log(e);
     }

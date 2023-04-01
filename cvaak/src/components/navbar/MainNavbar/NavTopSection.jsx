@@ -1,5 +1,3 @@
-// import { userLogout, userStatusUpdate } from "@/redux/auth/action";
-
 import SignInModal from "@/components/authCom/SignIn/SignInModal";
 import SignUpModal from "@/components/authCom/SignUp/SignUpModal";
 
@@ -18,8 +16,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 //import Link from 'next/link'
-// import { auth } from "config/firebase";
-// import { signOut } from "firebase/auth";
 import Image from "next/image";
 
 import React, { useEffect, useState } from "react";
@@ -37,32 +33,22 @@ import { useDispatch, useSelector } from "react-redux";
 // import { GETADMINSDATA, RESETCART } from "@/redux/admin/admin.types";
 // import { GetAdminDataRequest } from "@/redux/admin/admin.action";
 import Link from "next/link";
+import { userLogout, userStatusUpdate } from "@/redux/auth/action";
 
 const NavTopSection = () => {
-  const [isAuth, setIsAuth] = useState(false);
-  //   const { isAuth, userName } = useSelector((state) => state.authReducer);
+  const { isAuth, userName, admin } = useSelector((state) => state.authReducer);
   //   const cartData = useSelector((state) => state.AdminReducer.cart);
-  //   const dispatch = useDispatch();
-  //   const router = useRouter();
-  //   const data = useSelector((store) => store.AdminReducer.Admins);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-  //   useEffect(() => {
-  //     auth.onAuthStateChanged((user) => {
-  //       if (user) {
-  //         dispatch(userStatusUpdate(user.displayName));
-  //       }
-  //     });
-  //     dispatch(GetAdminDataRequest());
-  //   }, []);
   const handleLogout = () => {
-    localStorage.clear();
+    dispatch(userLogout());
   };
-  //   let x = data?.filter((item) => {
-  //     return item.name === userName;
+
   useEffect(() => {
-    let token = localStorage.getItem("token");
-    if (token) setIsAuth(true);
+    dispatch(userStatusUpdate());
   }, []);
+
   return (
     <Flex
       ml={{
@@ -238,8 +224,7 @@ const NavTopSection = () => {
               />
               <MenuList zIndex={3}>
                 <MenuItem as={"b"} color={"500"}>
-                  {/* Welcome {userName} */}
-                  Welcome
+                  Welcome {userName}
                 </MenuItem>
 
                 <Link href="/profile"> View Profile</Link>
@@ -267,11 +252,11 @@ const NavTopSection = () => {
                 <MenuItem>My Consultations</MenuItem>
                 <MenuItem>My Health records</MenuItem>
                 <MenuItem>Manage Payments </MenuItem>
-                {/* {x[0] && (
+                {admin && (
                   <MenuItem onClick={() => router.push("/admin")}>
                     admins here
                   </MenuItem>
-                )} */}
+                )}
                 <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
               </MenuList>
             </Menu>
@@ -330,8 +315,8 @@ const NavTopSection = () => {
                 bgColor={"500"}
                 borderRadius={"3px"}
                 ml={"-15px"}
-                mt={"-5px"}
-                h={"20px"}
+                mt={"-4px"}
+                h={"23px"}
                 w={"20px"}
                 textAlign={"center"}
                 zIndex={2}
