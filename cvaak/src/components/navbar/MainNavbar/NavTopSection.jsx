@@ -1,7 +1,7 @@
 // import { userLogout, userStatusUpdate } from "@/redux/auth/action";
 
-// import SignInModal from "@/components/authCom/SignIn/SignInModal";
-// import SignUpModal from "@/components/authCom/SignUp/SignUpModal";
+import SignInModal from "@/components/authCom/SignIn/SignInModal";
+import SignUpModal from "@/components/authCom/SignUp/SignUpModal";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
@@ -39,7 +39,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 
 const NavTopSection = () => {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
   //   const { isAuth, userName } = useSelector((state) => state.authReducer);
   //   const cartData = useSelector((state) => state.AdminReducer.cart);
   //   const dispatch = useDispatch();
@@ -54,13 +54,15 @@ const NavTopSection = () => {
   //     });
   //     dispatch(GetAdminDataRequest());
   //   }, []);
-  //   const handleLogout = async () => {
-  //     dispatch(userLogout());
-  //     await signOut(auth);
-  //   };
+  const handleLogout = () => {
+    localStorage.clear();
+  };
   //   let x = data?.filter((item) => {
   //     return item.name === userName;
-  //   });
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token) setIsAuth(true);
+  }, []);
   return (
     <Flex
       ml={{
@@ -239,9 +241,9 @@ const NavTopSection = () => {
                   {/* Welcome {userName} */}
                   Welcome
                 </MenuItem>
-                
-                <Link href="/profile">  View Profile</Link>
-              
+
+                <Link href="/profile"> View Profile</Link>
+
                 <MenuItem>My orders</MenuItem>
                 <MenuItem>
                   Previously Ordered Items{" "}
@@ -340,8 +342,8 @@ const NavTopSection = () => {
           </>
         ) : (
           <>
-            {/* <SignUpModal text={"Sign-Up"} />
-            <SignInModal /> */}
+            <SignUpModal text={"Sign-Up"} />
+            <SignInModal />
           </>
         )}
 
