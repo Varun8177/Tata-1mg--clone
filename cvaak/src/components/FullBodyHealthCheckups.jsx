@@ -144,14 +144,14 @@ const FullBodyHealthCheckups = () => {
                     <Text color="grey" fontSize="15px" as="del">
                       ₹{item.offered}
                     </Text>
-                    <Box
+                    <Text
                       bg="green.100"
                       color="green"
                       border="1px dotted green"
                       fontSize="15px"
                     >
                       {item.discount}
-                    </Box>
+                    </Text>
                   </Flex>
                 </Stack>
               </Box>

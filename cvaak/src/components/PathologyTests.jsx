@@ -144,14 +144,14 @@ const PathologyTests = () => {
                     <Text color="grey" fontSize="15px" as="del">
                       ₹{item.offered}
                     </Text>
-                    <Box
+                    <Text
                       bg="green.100"
                       color="#1aab2a"
                       border="1px dotted green"
                       fontSize="15px"
                     >
                       {item.discount}
-                    </Box>
+                    </Text>
                   </Flex>
                 </Stack>
               </Box>
