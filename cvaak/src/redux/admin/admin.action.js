@@ -5,10 +5,7 @@ import *as types from './admin.types'
 export const GetRequest = () => async (dispatch) => {
     dispatch({ type: types.LOADING })
     try {
-
         const res = await axios.get(`https://black-skirt.cyclic.app/products`)
-
- 
         dispatch({ type: types.GETPRODUCTS, payload: res.data })
     } catch (error) {
         dispatch({ type: types.ERROR })
