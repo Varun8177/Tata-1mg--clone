@@ -22,9 +22,15 @@ import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import Head from "next/head";
 
 const Cart = () => {
+
+//  const { isAuth, userName } = useSelector((state) => state.authReducer);
+let cartData = useSelector((state) => state.AdminReducer.cart);
+
   //  const { isAuth, userName } = useSelector((state) => state.authReducer);
   let cartData = useSelector((state) => state.AdminReducer.cart);
+
   let [totalPrice, setTotalPrice] = useState(0);
+  const [isAuth,setIsAuth]=useState(true)
   const router = useRouter();
   const dispatch = useDispatch();
   const [isAuth, setIsAuth] = useState(true);
@@ -41,6 +47,19 @@ const Cart = () => {
     setTotalPrice(totalPrice + value);
   };
 
+
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       dispatch(userStatusUpdate(user.displayName));
+  //     }
+  //   });
+  //   let x = cartData.reduce((acc, item) => (acc += item.price), 0);
+  //   setTotalPrice(x);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
+
   useEffect(() => {
     // auth.onAuthStateChanged((user) => {
     //   if (user) {
@@ -51,6 +70,7 @@ const Cart = () => {
     setTotalPrice(x);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
 
   return (
     <>
@@ -67,7 +87,7 @@ const Cart = () => {
             You are not Logged In
           </Text>
         </Center>
-      ) : cartData.length === 0 ? (
+      ) : cartData.length === 0 ?   (
         <Box bg="#f6f6f6" h="84vh">
           <Grid align={"center"} gap="30px" p="50px">
             <Image

@@ -5,13 +5,13 @@ import { reducer as authReducer } from "./auth/reducer"
 import AdminReducer from "./admin/admin.reducer"
 import adressReducer from "./adress/adress.reducer"
 
-// reducer
 const rootReducer = combineReducers({
     authReducer,
     AdminReducer,
     adressReducer,
     ProductReducer
 })
+
 
 const store = legacy_createStore(rootReducer, compose(applyMiddleware(thunk)))
 
