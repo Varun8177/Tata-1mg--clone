@@ -9,25 +9,31 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
- import { DeleteIcon } from "@chakra-ui/icons";
+import { DeleteIcon } from "@chakra-ui/icons";
 //  import { auth } from "config/firebase";
 // // import { userStatusUpdate } from "@/redux/auth/action";
 import { useDispatch, useSelector } from "react-redux";
- import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 // // import { DELETE_PRODUCT_REQUEST } from "@/redux/products/products.actionTypes";
 // // import EmptyCart from "@/components/EmptyCart";
 // // import { DeleteCartItem } from "@/redux/admin/admin.types";
 // // import AddReduceCartButton from "@/components/AddReduceCartButton";
- import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
+import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import Head from "next/head";
 
 const Cart = () => {
+
 //  const { isAuth, userName } = useSelector((state) => state.authReducer);
 let cartData = useSelector((state) => state.AdminReducer.cart);
+
+  //  const { isAuth, userName } = useSelector((state) => state.authReducer);
+  let cartData = useSelector((state) => state.AdminReducer.cart);
+
   let [totalPrice, setTotalPrice] = useState(0);
   const [isAuth,setIsAuth]=useState(true)
   const router = useRouter();
   const dispatch = useDispatch();
+  const [isAuth, setIsAuth] = useState(true);
   // let totalPrice = 0;
   let priceDiscount = 0;
 
@@ -41,6 +47,7 @@ let cartData = useSelector((state) => state.AdminReducer.cart);
     setTotalPrice(totalPrice + value);
   };
 
+
   // useEffect(() => {
   //   auth.onAuthStateChanged((user) => {
   //     if (user) {
@@ -51,6 +58,18 @@ let cartData = useSelector((state) => state.AdminReducer.cart);
   //   setTotalPrice(x);
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
+
+
+  useEffect(() => {
+    // auth.onAuthStateChanged((user) => {
+    //   if (user) {
+    //     dispatch(userStatusUpdate(user.displayName));
+    //   }
+    // });
+    let x = cartData.reduce((acc, item) => (acc += item.price), 0);
+    setTotalPrice(x);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   return (
