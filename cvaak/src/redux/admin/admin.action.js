@@ -5,10 +5,7 @@ import *as types from './admin.types'
 export const GetRequest = () => async (dispatch) => {
     dispatch({ type: types.LOADING })
     try {
-
         const res = await axios.get(`https://black-skirt.cyclic.app/products`)
-
-
         dispatch({ type: types.GETPRODUCTS, payload: res.data })
     } catch (error) {
         dispatch({ type: types.ERROR })
@@ -18,7 +15,7 @@ export const GetRequest = () => async (dispatch) => {
 export const GetUserDataRequest = () => async (dispatch) => {
     dispatch({ type: types.LOADING })
     try {
-        const res = await axios.get(`https://black-skirt.cyclic.app/users/`)
+        const res = await axios.get(`https://63f5d74059c944921f678f16.mockapi.io/users`)
         dispatch({ type: types.GETUSERDATA, payload: res.data })
     } catch (error) {
         dispatch({ type: types.ERROR })
@@ -32,15 +29,15 @@ export const PostUserDataRequest = (details) => async (dispatch) => {
     }
 }
 
-// export const GetOrdersDataRequest = () => async (dispatch) => {
-//     dispatch({ type: types.LOADING })
-//     try {
-//         const res = await axios.get(`https://black-skirt.cyclic.app/orders`)
-//         dispatch({ type: types.GETORDERSDATA, payload: res.data })
-//     } catch (error) {
-//         dispatch({ type: types.ERROR })
-//     }
-// }
+export const GetOrdersDataRequest = () => async (dispatch) => {
+    dispatch({ type: types.LOADING })
+    try {
+        const res = await axios.get(`https://63f5d74059c944921f678f16.mockapi.io/orders`)
+        dispatch({ type: types.GETORDERSDATA, payload: res.data })
+    } catch (error) {
+        dispatch({ type: types.ERROR })
+    }
+}
 
 // export const PostOrdersDataRequest = (details) => async (dispatch) => {
 //     const res = await axios.post(`https://black-skirt.cyclic.app/orders`, details)
