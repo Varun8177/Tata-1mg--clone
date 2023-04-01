@@ -143,7 +143,7 @@ export default function Cardpayment() {
                     router.push("/final");
                   } else {
                     toast({
-                      title: "adress not saved",
+                      title: "Incorrect captcha ",
                       description: "captcha incorrect",
                       status: "error",
                       duration: 4000,
@@ -183,8 +183,8 @@ export default function Cardpayment() {
   const cardstructure = () => {
     return (
       <>
-        <div style={{ gap: "40px", backgroundColor: "white" }}>
-          <div style={{ marginTop: "0px" }}>
+        <div style={{ gap: "40px", backgroundColor: "white",width:"100%",border:"1px solid red"}}>
+          <div style={{ marginTop: "40px"}}>
             <p style={{ fontSize: "14px", fontWeight: "bold" }}>
               Credit & bills
             </p>
@@ -323,7 +323,7 @@ export default function Cardpayment() {
           marginTop: "30px",
         }}
       >
-        <div
+        {/* <div
           style={{
             width: "20%",
             border: "0px solid red",
@@ -370,11 +370,11 @@ export default function Cardpayment() {
             />
             <Text>Pay on delivery</Text>
           </div>
-        </div>
+        </div> */}
         <div
           style={{
             width: "40%",
-            border: "0px solid red",
+            border: "1px solid red",
             height: "auto",
             padding: "20px",
             backgroundColor: "white",
@@ -382,10 +382,10 @@ export default function Cardpayment() {
         >
           {cards ? cardstructure() : cashdel()}
         </div>
-        <div style={{ width: "30%", border: "0px solid red", height: "auto" }}>
+        <div style={{ width: "40%", border: "0px solid red", height: "auto",border:"1px solid red" }}>
           <div
             style={{
-              height: "auto",
+             height:"auto",
               width: "95%",
               border: "0px solid red",
               marginTop: "50px",
@@ -417,6 +417,7 @@ export default function Cardpayment() {
                 display: "flex",
                 justifyContent: "space-between",
                 marginTop: "30px",
+                fontSize:"20px"
               }}
             >
               <Text fontSize={"12px"}>Item Total(MRP)</Text>
