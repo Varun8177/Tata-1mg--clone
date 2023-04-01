@@ -3,67 +3,70 @@ import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Boxes from "@/components/admin/Boxes";
 import { Bar, Pie } from "react-chartjs-2";
-// import { Chart as ChartJS } from "chart.js/auto";
-// import { useDispatch, useSelector } from "react-redux";
-// import {
-//   GetAdminDataRequest,
-//   GetOrdersDataRequest,
-//   GetRequest,
-//   GetUserDataRequest,
-// } from "@/redux/admin/admin.action";
+import { Chart as ChartJS } from "chart.js/auto";
+import { useDispatch, useSelector } from "react-redux";
+import { GetRequest } from "@/redux/admin/admin.action";
+import {
+  GetAdminDataRequest,
+  GetOrdersDataRequest,
+  GetUserDataRequest,
+} from "@/redux/admin/admin.action";
 // import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 // import { auth } from "config/firebase";
 // import { userStatusUpdate } from "@/redux/auth/action";
+import { getData } from "@/redux/products/products.action";
 
 const Admin = () => {
-  // const prod = useSelector((store) => store.AdminReducer.products);
-  // const data = useSelector((store) => store.AdminReducer.userData);
-  // const Orderdata = useSelector((store) => store.AdminReducer.orders);
+ //  const prod = useSelector((store) => store.AdminReducer.products);
+   const data = useSelector((store) => store.AdminReducer.userData);
+  const prod = useSelector((store) => store.ProductReducer.products);
+   const Orderdata = useSelector((store) => store.AdminReducer.orders);
   // const AdminName = useSelector((store) => store.AdminReducer.Admins);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const { isAuth, userName } = useSelector((state) => state.authReducer);
   // let total = Orderdata.reduce((acc, el) => acc + Number(el.orders), 0);
 
-  // const InitialData = () => {
-  //   dispatch(GetRequest());
-  // };
-  // useEffect(() => {
-  //   InitialData();
-  //   auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       dispatch(userStatusUpdate(user.displayName));
-  //     }
-  //   });
-  //   dispatch(GetUserDataRequest());
-  //   dispatch(GetOrdersDataRequest());
-  //   dispatch(GetAdminDataRequest());
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
+  const InitialData = () => {
+    dispatch(GetRequest());
+    dispatch(getData("", ""));
+  };
+  useEffect(() => {
+    InitialData();
+    // auth.onAuthStateChanged((user) => {
+    //   if (user) {
+    //     dispatch(userStatusUpdate(user.displayName));
+    //   }
+    // });
+    dispatch(GetUserDataRequest());
+    dispatch(GetOrdersDataRequest());
+    // dispatch(GetAdminDataRequest());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // let x = AdminName?.filter((item) => {
   //   return item.name === userName;
   // });
 
-  // const userData = {
-  //   labels: data.map((data) => data.day),
-  //   datasets: [
-  //     {
-  //       label: "Users Gained",
-  //       data: data.map((data) => data.userGain),
-  //       backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
-  //     },
-  //   ],
-  // };
-  // const OrdersData = {
-  //   labels: Orderdata.map((data) => data.day),
-  //   datasets: [
-  //     {
-  //       label: "Orders Placed",
-  //       data: Orderdata.map((data) => data.orders),
-  //       backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
-  //     },
-  //   ],
-  // };
+  const userData = {
+    labels: data.map((data) => data.day),
+    datasets: [
+      {
+        label: "Users Gained",
+        data: data.map((data) => data.userGain),
+        backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
+      },
+    ],
+  };
+  const OrdersData = {
+    labels: Orderdata.map((data) => data.day),
+    datasets: [
+      {
+        label: "Orders Placed",
+        data: Orderdata.map((data) => data.orders),
+        backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
+      },
+    ],
+  };{console.log(prod)}
   return (
     <>
       {/* <CartNavbar /> */}
@@ -118,15 +121,18 @@ const Admin = () => {
             >
               <Boxes
                 color={"#577590"}
-                // value={String(prod.length).split("").join(" ")}
+                 value={prod?.length}
+                 
                 text={"Total Products"}
                 location={"/admin/productdetails"}
+                src={"https://user-images.githubusercontent.com/107903370/229277637-f24596f8-7f0d-4d2e-9347-b2d87656b6d0.jpg"}
               />
-              <Boxes color={"#43aa8b"} value={"1 0"} text={"Users online"} />
+              <Boxes color={"#43aa8b"} value={"1 0"} text={"Users online"} src={"https://user-images.githubusercontent.com/107903370/229278170-dc210e2b-2b17-452e-9788-c88fd2077187.jpg"} />
               <Boxes
                 color={"#90be6d"}
                 // value={String(total).split("").join(" ")}
                 text={"orders"}
+                src={"https://icon2.cleanpng.com/20180614/aue/kisspng-computer-icons-purchase-order-purchasing-order-form-5b22a7babdcb73.7441057115289978187774.jpg"}
               />
             </Grid>
             <Grid
@@ -156,7 +162,7 @@ const Admin = () => {
                 }}
                 borderRadius={"10px"}
               >
-                {/* <Bar data={userData}   /> */}
+                <Bar data={userData}   />
               </Box>
               <Box
                 mt={{
@@ -178,7 +184,7 @@ const Admin = () => {
                 borderRadius={"10px"}
               >
                 {" "}
-                {/* <Pie data={OrdersData}  /> */}
+                <Pie data={OrdersData}  />
               </Box>
             </Grid>
           </Box>

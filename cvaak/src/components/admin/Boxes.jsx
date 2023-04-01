@@ -1,8 +1,8 @@
 import { Avatar, Box, Flex, Hide, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { FaLongArrowAltRight } from "react-icons/fa"
 
-function Boxes({ color, value, text, location }) {
+function Boxes({ color, value, text, location,src }) {
   const router = useRouter();
   return (
     <Box
@@ -27,8 +27,16 @@ function Boxes({ color, value, text, location }) {
       pt={"15px"}
     >
       <Flex alignItems={"center"} w={"100%"} justifyContent={"space-around"}>
-        <Avatar bgColor={"white"} color={"black"} name={String(value)} />
+        <Box>
+        {/* <Avatar bgColor={"white"} color={"black"} name={String(value)} /> */}
+        <img  style={{width:"60px",borderRadius:"50%"}} src={src} alt="logo" />
+        </Box>
+        <Box>
         <Text color={"black"}>{text}</Text>
+       
+        <Text style={{fontSize:"25px",fontWeight:"bold"}} >{value}</Text>
+        </Box>
+
       </Flex>
       <Flex
         alignItems={"center"}
@@ -46,9 +54,10 @@ function Boxes({ color, value, text, location }) {
         onClick={() => {
           router.push(location);
         }}
-      >
-        <Text w={"fit-content"}>View Details</Text>
-        <FaLongArrowAltRight style={{ marginLeft: "20px" }} />
+      > 
+      
+        {/* <Text w={"fit-content"}>View Details</Text> */}
+        {/* <FaLongArrowAltRight style={{ marginLeft: "20px" }} /> */}
       </Flex>
     </Box>
   );

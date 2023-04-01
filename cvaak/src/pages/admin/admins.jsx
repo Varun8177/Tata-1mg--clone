@@ -109,9 +109,239 @@ const AdminsSection = () => {
               m={"auto"}
               w={"fit-content"}
               alignItems={"center"}
-              h={"400px"}
+            style={{padding:"10px"}}
             >
-              {data.map((item, i) => {
+              <Box  borderRadius={"10px"}                   // w={"220px"}
+                  
+                    bgColor={"gray.200"}>
+                   <Image  src="https://user-images.githubusercontent.com/107903370/229293324-10e35181-deaa-44c8-95a5-5b1366f9b6c2.jpg" />
+                   <Box>
+                    
+                  
+                   <Text style={{paddingLeft:"15px"}} >Position: Admin</Text>
+                   
+                  
+                   <Text style={{paddingLeft:"15px"}} >Name: Varun Ergurala</Text> 
+                  
+                   
+                   <Text style={{paddingLeft:"15px"}} >Mobile: 8177836651</Text> 
+                   <Flex w="100%" justifyContent={"space-evenly"} style={{paddingBottom:"5px"}}>
+                      <Image
+                        src="https://onemg.gumlet.io/vqpr5zx9ofpsyafjwwin.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/wwynoy59i3iakt8te5xl.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/cwrpdmlzckwzvv9e1gjv.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+
+                      <Image
+                        src="https://onemg.gumlet.io/hqfglkzkfxaxaypniixn.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                    </Flex>
+                   </Box>
+                   {/* <Center> */}
+                     
+                    {/* </Center> */}
+              </Box>
+              <Box  borderRadius={"10px"}                   // w={"220px"}
+                  
+                    bgColor={"gray.200"}>
+                   <Image src="https://ca.slack-edge.com/T0515GFL9P0-U0515KBFT7Y-ddd8006b1698-512" />
+                   <Box>
+                    
+                  
+                   <Text style={{paddingLeft:"15px"}} >Position: Admin</Text>
+                   
+                  
+                   <Text style={{paddingLeft:"15px"}} >Name: Aman Kumar</Text> 
+                  
+                   
+                   <Text style={{paddingLeft:"15px"}} >Mobile:  7970666241</Text> 
+                   <Flex w="100%" justifyContent={"space-evenly"} style={{paddingBottom:"5px"}}>
+                      <Image
+                        src="https://onemg.gumlet.io/vqpr5zx9ofpsyafjwwin.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/wwynoy59i3iakt8te5xl.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/cwrpdmlzckwzvv9e1gjv.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+
+                      <Image
+                        src="https://onemg.gumlet.io/hqfglkzkfxaxaypniixn.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                    </Flex>
+                   </Box>
+                   {/* <Center> */}
+                     
+                    {/* </Center> */}
+              </Box>
+              <Box  borderRadius={"10px"}                   // w={"220px"}
+                  
+                    bgColor={"gray.200"}>
+                   <Image src="https://ca.slack-edge.com/T0515GFL9P0-U050XMU345V-5def209d35d4-512" />
+                   <Box>
+                    
+                  
+                   <Text style={{paddingLeft:"15px",fontSize:"20px"}} >Position: Admin</Text>
+                   
+                  
+                   <Text style={{paddingLeft:"15px"}} >Name: Abhishek Jha</Text> 
+                  
+                   
+                   <Text style={{paddingLeft:"15px"}} >Mobile: 8282827633</Text> 
+                   <Flex w="100%" justifyContent={"space-evenly"} style={{paddingBottom:"5px"}}>
+                      <Image
+                        src="https://onemg.gumlet.io/vqpr5zx9ofpsyafjwwin.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/wwynoy59i3iakt8te5xl.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/cwrpdmlzckwzvv9e1gjv.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+
+                      <Image
+                        src="https://onemg.gumlet.io/hqfglkzkfxaxaypniixn.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                    </Flex>
+                   </Box>
+                   {/* <Center> */}
+                     
+                    {/* </Center> */}
+              </Box>
+              <Box  borderRadius={"10px"}                   // w={"220px"}
+                  
+                    bgColor={"gray.200"}>
+                   <Image src="https://ca.slack-edge.com/T0515GFL9P0-U0515UCVAHL-ef7f18c3003c-512" />
+                   <Box>
+                    
+                  
+                   <Text style={{paddingLeft:"15px",fontSize:"20px"}} >Position: Admin</Text>
+                   
+                  
+                   <Text style={{paddingLeft:"15px"}} >Name: Kalpita Gavas</Text> 
+                  
+                   
+                   <Text style={{paddingLeft:"15px"}} >Mobile: 7715955014</Text> 
+                   <Flex w="100%" justifyContent={"space-evenly"} style={{paddingBottom:"5px"}}>
+                      <Image
+                        src="https://onemg.gumlet.io/vqpr5zx9ofpsyafjwwin.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/wwynoy59i3iakt8te5xl.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/cwrpdmlzckwzvv9e1gjv.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+
+                      <Image
+                        src="https://onemg.gumlet.io/hqfglkzkfxaxaypniixn.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                    </Flex>
+                   </Box>
+                   {/* <Center> */}
+                     
+                    {/* </Center> */}
+              </Box>
+              <Box  borderRadius={"10px"}                   // w={"220px"}
+                  
+                    bgColor={"gray.200"}>
+                   <Image src="https://user-images.githubusercontent.com/107903370/204104218-89c5e976-39fb-433d-98c3-f2340c6fbb04.PNG" />
+                   <Box>
+                    
+                  
+                   <Text style={{paddingLeft:"15px",fontSize:"20px"}} >Position: Admin</Text>
+                   
+                  
+                   <Text style={{paddingLeft:"15px"}} >Name: Gedela Chandra Sekhar</Text> 
+                  
+                   
+                   <Text style={{paddingLeft:"15px"}} >Mobile: 7659912637</Text> 
+                   <Flex w="100%" justifyContent={"space-evenly"} style={{paddingBottom:"5px"}}>
+                      <Image
+                        src="https://onemg.gumlet.io/vqpr5zx9ofpsyafjwwin.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/wwynoy59i3iakt8te5xl.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                      <Image
+                        src="https://onemg.gumlet.io/cwrpdmlzckwzvv9e1gjv.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+
+                      <Image
+                        src="https://onemg.gumlet.io/hqfglkzkfxaxaypniixn.svg"
+                        alt="fb"
+                        width="30"
+                        height="30"
+                      />
+                    </Flex>
+                   </Box>
+                   {/* <Center> */}
+                     
+                    {/* </Center> */}
+              </Box>
+              {/* {data.map((item, i) => {
                 return (
                   <Box
                     borderRadius={"10px"}
@@ -132,7 +362,7 @@ const AdminsSection = () => {
                     </Center>
                     <Center>
                       <Grid templateColumns={"repeat(2,1fr)"}>
-                        <Text>Position:</Text>
+                        <Text>Position: Develoer</Text>
                         <Text>{item.position}</Text>
                         <Text>Contact:</Text>
                         <Text>{item.contact}</Text>
@@ -167,7 +397,7 @@ const AdminsSection = () => {
                     </Flex>
                   </Box>
                 );
-              })}
+              })} */}
             </Grid>
             {/* <Flex w={"20%"} m={"auto"} justifyContent={"space-evenly"}>
             <Button>Next</Button>

@@ -1,8 +1,8 @@
 import Sidebar from "@/components/admin/Sideview";
-// import useValueChange from "@/components/customHooks/useValueChange";
-// import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
+ import useValueChange from "@/components/customHooks/useValueChange";
+import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import { GetAdminDataRequest } from "@/redux/admin/admin.action";
-// import { userLogout, userStatusUpdate } from "@/redux/auth/action";
+ import { userLogout, userStatusUpdate } from "@/redux/auth/action";
 import { EditIcon } from "@chakra-ui/icons";
 import {
   Avatar,
@@ -15,7 +15,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-// import { auth } from "config/firebase";
+//  import { auth } from "config/firebase";
 // import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -25,7 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const AdminSettings = () => {
   const data = useSelector((store) => store.AdminReducer.Admins);
-  // const { isAuth, userName } = useSelector((state) => state.authReducer);
+   const { isAuth, userName } = useSelector((state) => state.authReducer);
   const [domLoaded, setDomLoaded] = useState(false);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
@@ -33,9 +33,9 @@ const AdminSettings = () => {
   const [editGender, setEditGender] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [name, setname] = useValueChange("");
-  const [email, setEmail] = useValueChange("");
-  const [mobile, setMobile] = useValueChange("");
-  const [gender, setGender] = useValueChange("male");
+   const [email, setEmail] = useValueChange("");
+   const [mobile, setMobile] = useValueChange("");
+   const [gender, setGender] = useValueChange("male");
   const dispatch = useDispatch();
   const router = useRouter();
   const Remove = () => setSelectedImage(null);
@@ -47,23 +47,23 @@ const AdminSettings = () => {
     setSelectedImage(URL.createObjectURL(event.target.files[0]));
   };
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        dispatch(userStatusUpdate(user.displayName));
-      }
-    });
-    setDomLoaded(true);
-    dispatch(GetAdminDataRequest());
-  }, []);
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       dispatch(userStatusUpdate(user.displayName));
+  //     }
+  //   });
+  //   setDomLoaded(true);
+  //   dispatch(GetAdminDataRequest());
+  // }, []);
 
-  let x = data?.filter((item) => {
-    return item.name === userName;
-  });
+  // let x = data?.filter((item) => {
+  //   return item.name === userName;
+  // });
   return (
     <>
-      <CartNavbar />{" "}
-      {domLoaded && (
+      {/* <CartNavbar />{" "} */}
+      {/* {domLoaded && ( */}
         <Box bgColor={"#d8dff7"} h={"90vh"}>
           <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
             <Box
@@ -123,7 +123,7 @@ const AdminSettings = () => {
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        {name.length ? name : x[0]?.name}
+                        Varun Ergurala
                       </Text>
                     )}
                   </Box>
@@ -170,7 +170,7 @@ const AdminSettings = () => {
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        {email.length ? email : x[0]?.email}
+                        varun@gmail.com
                       </Text>
                     )}
                   </Box>
@@ -217,7 +217,7 @@ const AdminSettings = () => {
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        {mobile.length ? mobile : x[0]?.contact}
+                       8177836651
                       </Text>
                     )}
                   </Box>
@@ -264,7 +264,7 @@ const AdminSettings = () => {
                       </Stack>
                     ) : (
                       <Text fontSize={"12px"} color={"500"}>
-                        {gender.length ? gender : x[0]?.gender}
+                      Male
                       </Text>
                     )}
                   </Box>
@@ -292,7 +292,7 @@ const AdminSettings = () => {
                       alt="not found"
                       width={"250px"}
                       h={"250px"}
-                      src={selectedImage ? selectedImage : x[0]?.profile}
+                      src={"https://i.postimg.cc/8PSx1xFj/new-profile.jpg"}
                     />
                     <input type="file" name="myImage" onChange={upload} />
                   </Box>
@@ -301,7 +301,7 @@ const AdminSettings = () => {
             </Box>
           </Flex>
         </Box>
-      )}
+       {/* )} */}
     </>
   );
 };
