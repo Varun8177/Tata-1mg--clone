@@ -84,29 +84,30 @@ const Payment = () => {
   return (
     <>
       <CartNavbar />
-      <Box padding={"50px"} backgroundColor={"gray.50"}>
+      <Box padding={"50px"} backgroundColor={"gray.50"} style={{border:"0px solid red"}}>
         <Box
           style={{
-            border: "0px solid gray",
+            border: "0px solid red",
             marginLeft: "700px",
             color: "333333",
             fontSize: "16px",
+            width:"20%",
             fontFamily: "Clear SansHelvetica Neue",
           }}
         >
-          <h1 style={{fontSize:"30px",fontWeight:"bold"}}>Shipping Address</h1>
+          <h1 style={{fontSize:"30px",fontWeight:"bold" }}>Shipping Address</h1>
         </Box>
-        <Box>
+        {/* <Box style={{border:"1px solid red",marginBottom:"90%"}}> */}
         <Box
           style={{
             display:"flex",
             justifyContent:"space-around",
             borderStyle: "ridge",
             width: "80%",
-            height: "74vh",
              marginLeft:"180px",
+            alignContent:"center",
             backgroundColor: "#fef7ef",
-            padding: "20px",
+
           }}
         >
           <Box>
@@ -312,7 +313,7 @@ const Payment = () => {
           
        
          
-        </Box>
+        {/* </Box> */}
             </Box>
 
          
