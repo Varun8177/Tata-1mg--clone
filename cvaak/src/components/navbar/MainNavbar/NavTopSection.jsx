@@ -1,7 +1,5 @@
-// import { userLogout, userStatusUpdate } from "@/redux/auth/action";
-
-// import SignInModal from "@/components/authCom/SignIn/SignInModal";
-// import SignUpModal from "@/components/authCom/SignUp/SignUpModal";
+import SignInModal from "@/components/authCom/SignIn/SignInModal";
+import SignUpModal from "@/components/authCom/SignUp/SignUpModal";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
@@ -18,8 +16,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 //import Link from 'next/link'
-// import { auth } from "config/firebase";
-// import { signOut } from "firebase/auth";
 import Image from "next/image";
 
 import React, { useEffect, useState } from "react";
@@ -34,33 +30,25 @@ import { GiMeditation } from "react-icons/gi";
 import { ImLab } from "react-icons/im";
 import { TbDiscount2, TbHelp } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-// import { GETADMINSDATA, RESETCART } from "@/redux/admin/admin.types";
-// import { GetAdminDataRequest } from "@/redux/admin/admin.action";
 import Link from "next/link";
+import { userLogout, userStatusUpdate } from "@/redux/auth/action";
+import { getCartData } from "@/redux/cart/cart.action";
 
 const NavTopSection = () => {
-  const [isAuth, setIsAuth] = useState(true);
-  //   const { isAuth, userName } = useSelector((state) => state.authReducer);
-  //   const cartData = useSelector((state) => state.AdminReducer.cart);
-  //   const dispatch = useDispatch();
-  //   const router = useRouter();
-  //   const data = useSelector((store) => store.AdminReducer.Admins);
+  const { isAuth, userName, admin } = useSelector((state) => state.authReducer);
+  const cartData = useSelector((state) => state.CartReducer.products);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-  //   useEffect(() => {
-  //     auth.onAuthStateChanged((user) => {
-  //       if (user) {
-  //         dispatch(userStatusUpdate(user.displayName));
-  //       }
-  //     });
-  //     dispatch(GetAdminDataRequest());
-  //   }, []);
-  //   const handleLogout = async () => {
-  //     dispatch(userLogout());
-  //     await signOut(auth);
-  //   };
-  //   let x = data?.filter((item) => {
-  //     return item.name === userName;
-  //   });
+  const handleLogout = () => {
+    dispatch(userLogout());
+  };
+
+  useEffect(() => {
+    dispatch(userStatusUpdate());
+    dispatch(getCartData());
+  }, []);
+
   return (
     <Flex
       ml={{
@@ -74,7 +62,6 @@ const NavTopSection = () => {
       justifyContent={"space-between"}
     >
       <Flex
-        // border={"1px solid red"}
         w={{
           base: "100%",
           sm: "100%",
@@ -94,7 +81,7 @@ const NavTopSection = () => {
         alignItems={"center"}
       >
         <Link href={"/"}>
-          <Image src={"/cvaak.jpeg"} height={"50"} alt={"logo"} width={"120"} />
+          <Image src={"/cvaak.png"} height={"50"} alt={"logo"} width={"160"} />
         </Link>
         <Hide breakpoint="(max-width: 397px)">
           <Text
@@ -236,12 +223,11 @@ const NavTopSection = () => {
               />
               <MenuList zIndex={3}>
                 <MenuItem as={"b"} color={"500"}>
-                  {/* Welcome {userName} */}
-                  Welcome
+                  Welcome {userName}
                 </MenuItem>
-                
-                <Link href="/profile">  View Profile</Link>
-              
+
+                <Link href="/profile"> View Profile</Link>
+
                 <MenuItem>My orders</MenuItem>
                 <MenuItem>
                   Previously Ordered Items{" "}
@@ -265,11 +251,11 @@ const NavTopSection = () => {
                 <MenuItem>My Consultations</MenuItem>
                 <MenuItem>My Health records</MenuItem>
                 <MenuItem>Manage Payments </MenuItem>
-                {/* {x[0] && (
+                {admin && (
                   <MenuItem onClick={() => router.push("/admin")}>
                     admins here
                   </MenuItem>
-                )} */}
+                )}
                 <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
               </MenuList>
             </Menu>
@@ -282,7 +268,7 @@ const NavTopSection = () => {
                   icon={<AiOutlineShoppingCart size={"30"} />}
                   variant={"unstyled"}
                 />
-                {/* {cartData?.length >= 1 && (
+                {cartData?.length >= 1 && (
                   <MenuList zIndex={5}>
                     <Flex justifyContent={"space-around"} w={"100%"}>
                       <Text as={"b"}>Order Summary</Text>
@@ -304,7 +290,9 @@ const NavTopSection = () => {
                             ? cartData[cartData.length - 2].title.substr(0, 13)
                             : null}
                         </Text>
-                        <Text fontSize={13}>Qty:1</Text>
+                        <Text fontSize={13}>
+                          Qty:{cartData[cartData.length - 2].qty}
+                        </Text>
                       </Flex>
                     )}
                     <MenuItem>
@@ -321,27 +309,27 @@ const NavTopSection = () => {
                       </Text>
                     </MenuItem>
                   </MenuList>
-                )} */}
+                )}
               </Menu>
               <Text
                 color={"white"}
                 bgColor={"500"}
                 borderRadius={"3px"}
                 ml={"-15px"}
-                mt={"-5px"}
-                h={"20px"}
+                mt={"-4px"}
+                h={"23px"}
                 w={"20px"}
                 textAlign={"center"}
                 zIndex={2}
               >
-                {/* {cartData.length} */}0
+                {cartData?.length}
               </Text>
             </Flex>
           </>
         ) : (
           <>
-            {/* <SignUpModal text={"Sign-Up"} />
-            <SignInModal /> */}
+            <SignUpModal text={"Sign-Up"} />
+            <SignInModal />
           </>
         )}
 

@@ -7,19 +7,65 @@ import {
   Image,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import Footer from "@/components/footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getCartData } from "@/redux/cart/cart.action";
+
+function calculateTotalDiscount(products) {
+  let total = 0;
+  let totalSavings = 0;
+  let totalDiscount = 0;
+  let totalBeforeDiscount = 0;
+
+  for (let i = 0; i < products.length; i++) {
+    const price = products[i].price;
+    const discount = parseInt(products[i]["discount-percent"]);
+
+    const savings = price * (discount / 100);
+    const discountedPrice = price - savings;
+    const discountAmount = price - discountedPrice;
+
+    totalBeforeDiscount += price;
+    total += discountedPrice;
+    totalSavings += savings;
+    totalDiscount += discountAmount;
+  }
+
+  return { total, totalSavings, totalDiscount, totalBeforeDiscount };
+}
 const Summary = () => {
   const adress = useSelector((state) => state.adressReducer);
-  const data = useSelector((state) => state.AdminReducer.cart);
-  let cartData = useSelector((state) => state.AdminReducer.cart);
+  const cartData = useSelector((state) => state.CartReducer.products);
+  const dispatch = useDispatch();
+  const [total, setTotal] = useState(0);
+  const [totalSavings, setTotalSavings] = useState(0);
+  const [totalDiscount, setTotalDiscount] = useState(0);
+  const [totalBeforeDiscount, setTotalBeforeDiscount] = useState(0);
+  useEffect(() => {
+    dispatch(getCartData());
+  }, []);
+
+  useEffect(() => {
+    const { total, totalSavings, totalDiscount, totalBeforeDiscount } =
+      calculateTotalDiscount(cartData);
+    setTotal(total);
+    setTotalSavings(totalSavings);
+    setTotalDiscount(totalDiscount);
+    setTotalBeforeDiscount(totalBeforeDiscount);
+  }, []);
   return (
     <>
       <CartNavbar />
 
-      <div style={{ display: "flex", gap: "40px", backgroundColor: "#FAFAFA" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "40px",
+          backgroundColor: "#FAFAFA",
+        }}
+      >
         <div backgroundColor={"gray"}>
           <Text marginTop={"20px"} marginLeft={"160px"}>
             Order Summary
@@ -72,6 +118,7 @@ const Summary = () => {
             marginLeft={"150px"}
             backgroundColor={"#fef7ef"}
             h={"auto"}
+            mb={"20px"}
           >
             <CardBody>
               <Text fontSize={"12px"} fontWeight={"bold"}>
@@ -137,12 +184,18 @@ const Summary = () => {
             marginTop={"20px"}
             id="adress-card"
           >
-            <Text fontSize={"15px"} fontWeight={"bold"}>
+            <Text fontSize={"15px"} fontWeight={"bold"} marginLeft={"10px"}>
               Home
             </Text>
-            <Text fontSize={"12px"}>{adress.name}</Text>
-            <Text fontSize={"12px"}>{adress.mobile}</Text>
-            <Text fontSize={"12px"}>{adress.actualadress}</Text>
+            <Text fontSize={"12px"} marginLeft={"10px"}>
+              {adress.name}
+            </Text>
+            <Text fontSize={"12px"} marginLeft={"10px"}>
+              {adress.mobile}
+            </Text>
+            <Text fontSize={"12px"} marginLeft={"10px"}>
+              {adress.actualadress}
+            </Text>
           </div>
 
           <div
@@ -163,7 +216,7 @@ const Summary = () => {
               }}
             >
               <Text fontSize={"12px"}>Item Total(MRP)</Text>
-              <Text fontSize={"12px"}>2000</Text>
+              <Text fontSize={"12px"}>₹{totalBeforeDiscount}</Text>
             </div>
             <div
               style={{
@@ -173,7 +226,7 @@ const Summary = () => {
               }}
             >
               <Text fontSize={"12px"}>Price Discount</Text>
-              <Text fontSize={"12px"}>-₹591</Text>
+              <Text fontSize={"12px"}>-₹{totalDiscount}</Text>
             </div>
             <div
               style={{
@@ -211,7 +264,7 @@ const Summary = () => {
               }}
             >
               <Text fontSize={"12px"}>To be paid</Text>
-              <Text fontSize={"12px"}>₹2643</Text>
+              <Text fontSize={"12px"}>₹{total}</Text>
             </div>
             <div
               style={{
@@ -226,7 +279,7 @@ const Summary = () => {
               }}
             >
               <Text fontSize={"12px"}>Total Savings</Text>
-              <Text fontSize={"12px"}>₹591</Text>
+              <Text fontSize={"12px"}>₹{totalSavings}</Text>
             </div>
             <Link href={"/cardpayment"}>
               <div

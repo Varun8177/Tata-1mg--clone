@@ -28,73 +28,88 @@ import { useDispatch, useSelector } from "react-redux";
 import MainNavbar from "@/components/navbar/MainNavbar/MainNavbar";
 import Footer from "@/components/footer";
 import { BsGraphUpArrow } from "react-icons/bs";
+import { postCartData } from "@/redux/cart/cart.action";
 // import { AddCartItem } from "@/redux/admin/admin.types";
 
 const SingleProductPage = ({ data }) => {
   const toast = useToast();
   const dispatch = useDispatch();
+  const [addText, setAddText] = useState("Add To Cart");
   const Dummydata = [
     {
+      _id: "6426fc0afcf829b54a307b02",
+      title: "Himalaya Gentle Baby Soap 75gm (Buy 3 Get 1 Free)",
+      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/cropped/ubgtztgs4xp2xakp9muz/himalaya-gentle-baby-soap-75gm-buy-3-get-1-free.jpg",
+      packsize: "box of 4 soaps",
+      price: 144,
+      "strike-price": "165",
+      "discount-percent": "12%",
       maxQty: 7,
-      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/0fa72f2c-072d-4c6a-bc52-446edab403a4/tata-1mg-salmon-omega-3-fish-oil-capsule.jpeg",
-      title: "Tata 1mg Salmon Omega 3 Fish Oil Capsule",
-      packsize: "bottle of 60 capsules",
+      rating: "4.5",
+      CardRatingDetail: "432 ratings",
+      description:
+        "Himalaya Gentle Baby Soap is a clinically tested, hypoallergenic soap that can help moisturise and cleanse soft, sensitive skin. It is a pure, gentle and safe soap that is free of paraben, animal fats and synthetic colours. The soap can suit normal skin types and is ideal for daily use. It can help manage dry skin and remove impurities from the skin. It keeps the baby feeling fresh and rejuvenated.",
+      category: "aryurvedic",
+    },
+    {
+      _id: "6426fc0afcf829b54a307b03",
+      title: "Mamaearth Tea Tree Face Wash",
+      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/cropped/ugjgxvpb3rijvtrhfxig/mamaearth-tea-tree-face-wash.jpg",
+      packsize: "tube of 100 ml Face Wash",
+      price: 228,
+      "strike-price": "259",
+      "discount-percent": "12%",
+      maxQty: 7,
+      rating: "4.2",
+      CardRatingDetail: "769 ratings",
+      description:
+        "Mamaearth Face Wash Tea Tree helps to reduce and prevent the development of acne and pimples by controlling excess oil secretion.",
+      category: "aryurvedic",
+    },
+    {
+      _id: "6426fc0afcf829b54a307b04",
+      title: "MuscleBlaze Fish Oil 1000mg Soft Gelatin Capsule",
+      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/uwimvlsrkb3z0esxy2qr/muscleblaze-fish-oil-1000mg-soft-gelatin-capsule.jpg",
+      packsize: "bottle of 180 soft gelatin capsules",
+      price: 999,
+      "strike-price": "1429",
+      "discount-percent": "30%",
+      maxQty: 7,
       rating: "4.4",
-      CardRatingDetail: "1506 ratings",
-      "strike-price": "995",
-      "discount-percent": "47% off",
-      price: 524,
-      id: 1,
+      CardRatingDetail: "88 ratings",
+      description:
+        "MuscleBlaze Fish Oil 1000mg Soft Gelatin Capsule is now India's first and only certified Fish Oil for Purity and Accuracy by the reputed lab Labdoor, USA. It contains omega-3 fatty acids including 180mg Eicosapentaenoic acid (EPA) and 120mg Docosahexaenoic acid (DHA). They contain good fats and antioxidants that not only boost your immunity but also help in keeping fitness buffs, athletes, and bodybuilders fit and active.",
+      category: "supplement",
     },
     {
+      _id: "6426fc0afcf829b54a307b05",
+      title: "MuscleBlaze MB Whey Protein Rich Milk Chocolate",
+      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/rnvl3l0jtnc5ys5dwvts/muscleblaze-mb-whey-protein-rich-milk-chocolate.jpg",
+      packsize: "jar of 4.4 lb Powder",
+      price: 5098,
+      "strike-price": "6669",
+      "discount-percent": "23%",
       maxQty: 7,
-      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/gc3u9gfc331wtsipnljl/tata-1mg-calcium-vitamin-d3-zinc-magnesium-and-alfalfa-tablet-joint-support-bones-health-immunity-energy-support.jpg",
-      title:
-        "Tata 1mg Calcium + Vitamin D3, Zinc, Magnesium and Alfalfa Tablet, Joint Support, Bones Health, Immunity & Energy Support",
-      packsize: "bottle of 60 tablets",
-      rating: "4.3",
-      CardRatingDetail: "2418 ratings",
-      "strike-price": "595",
-      "discount-percent": "53% off",
-      price: 277,
-      id: 2,
-    },
-    {
-      maxQty: 7,
-      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/gggpxmbrgyv0uqhzwyy8/tata-1mg-lumbar-sacral-belt-for-lower-back-support-universal.jpg",
-      title: "Tata 1mg Lumbar Sacral Belt for Lower Back Support Universal",
-      packsize: "box of 1 Unit",
       rating: "4.2",
-      CardRatingDetail: "94 ratings",
-      "strike-price": "800",
-      "discount-percent": "43% off",
-      price: 451,
-      id: 3,
+      CardRatingDetail: "453 ratings",
+      description:
+        "The ultimate MuscleBlaze 100% Whey Protein Supplement Powder with Digestive Enzyme, 4.4 lb 57 Servings (Rich Milk Chocolate) is a new benchmark of power-packed performance for all kinds of protein supplements in the market. All the best quality raw materials are directly imported from top-notch international sources maximizing your overall workout performance. It is widely recommended for muscle building enthusiasts, athletes, weight lifters and other active individuals.",
+      category: "supplement",
     },
     {
+      _id: "6426fc0afcf829b54a307b06",
+      title: "Swadeshi Tulsi Drop",
+      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/fgw47znpfv2czxnnnxsi/swadeshi-tulsi-drop.jpg",
+      packsize: "bottle of 15 ml Drop",
+      price: 110,
+      "strike-price": "2323",
+      "discount-percent": "23%",
       maxQty: 7,
-      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/gmkrpf1imjj9djwvq4gq/tata-1mg-multivitamin-supreme-zinc-calcium-and-vitamin-d-capsule-for-immunity-energy-overall-health.jpg",
-      title:
-        "Tata 1mg Multivitamin Supreme, Zinc, Calcium and Vitamin D Capsule for Immunity, Energy, Overall Health",
-      packsize: "bottle of 60 capsules",
       rating: "4.2",
-      CardRatingDetail: "1243 ratings",
-      "strike-price": "995",
-      "discount-percent": "57% off",
-      price: 422,
-      id: 4,
-    },
-    {
-      maxQty: 7,
-      src: "https://onemg.gumlet.io/images/f_auto,w_150,h_150,c_fit,q_auto/59d4bf61-6252-419d-80f7-340459744690/i-know-ovulation-strip-kit.jpeg",
-      title: "i-Know Ovulation Strip Kit",
-      packsize: "packet of 5 Test Kits",
-      rating: "3.7",
-      CardRatingDetail: "339 ratings",
-      "strike-price": "549",
-      "discount-percent": "14% off",
-      price: 472,
-      id: 5,
+      CardRatingDetail: "173 ratings",
+      description:
+        "Swadeshi Tulsi Drops is a natural immunity booster to give you adequate protection in the flu season. Tulsi or the Holy basil is the most revered plant in India and it has been used in ancient India to treat many disorders in the body. It is primarily used to protect one from common flu, fever, malaria, diarrhoea, respiratory issues, asthma and is also used to maintain healthy lungs.",
+      category: "aryurvedic",
     },
   ];
   // const { isAuth, userName } = useSelector((state) => state.authReducer);
@@ -102,7 +117,7 @@ const SingleProductPage = ({ data }) => {
   return (
     <>
       <Head>
-        <title>Health Prime</title>
+        <title>CVAAK</title>
         <meta name="description" content="Generated by create next app" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -110,15 +125,12 @@ const SingleProductPage = ({ data }) => {
       <>
         <MainNavbar />
         <Stack
-          // border={"1px solid black"}
           maxW="90%"
           direction={{ lg: "row", md: "column", base: "column" }}
           m={{ lg: "40px auto", md: "30px auto", base: "20px auto" }}
         >
           <Flex
-            // border={"1px solid red"}
             w={{ lg: "65%", md: "100%", base: "100%" }}
-            // m="auto"
             direction={{ lg: "row", md: "row", base: "column" }}
           >
             <Box w={{ lg: "50%", md: "100%", base: "100%" }}>
@@ -170,19 +182,39 @@ const SingleProductPage = ({ data }) => {
               <Text color="grey" fontSize={"18px"} mb={"10px"} fontWeight={600}>
                 {data.packsize}
               </Text>
-              <Text
-                fontSize={{ lg: "14px", md: "12px", base: "10px" }}
-                lineHeight="20px"
-                fontWeight={"400"}
-                textAlign={"justify"}
-                pb="15px"
+              <ul
+                style={{
+                  listStyleType: "disc",
+                  paddingLeft: "20px",
+                  alignSelf: "flex-start",
+                  fontSize: "14px",
+                  marginBottom: "10px",
+                }}
               >
-                Product highlights <br />• Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. <br />• Exercitationem at nam
-                tempora voluptatem error hic vitae. <br />
-                • excepturi iure nulla ducimus in. <br />• Atque minima
-                accusantium quibusdam.
-              </Text>
+                <li>
+                  Contains a blend of vitamins and minerals to support overall
+                  health and well-being
+                </li>
+                <li>
+                  Formulated with antioxidants to help protect against oxidative
+                  stress and free radical damage
+                </li>
+                <li>
+                  Includes probiotics to support digestive health and immune
+                  function
+                </li>
+                <li>
+                  Non-GMO, gluten-free, and free from artificial colors,
+                  flavors, and preservatives
+                </li>
+                <li>Third-party tested for purity and potency</li>
+                <li>
+                  Made in a GMP-certified facility to ensure quality and
+                  consistency
+                </li>
+                <li>Easy-to-swallow capsules for convenient daily use</li>
+                <li>100% satisfaction guarantee or your money back</li>
+              </ul>
             </Box>
           </Flex>
           <Grid
@@ -203,7 +235,7 @@ const SingleProductPage = ({ data }) => {
                 md: "250px",
                 lg: "409px",
               }}
-              h={"277px"}
+              h={"347px"}
               boxShadow="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
               borderRadius={"10px"}
             >
@@ -225,20 +257,25 @@ const SingleProductPage = ({ data }) => {
                 </Text>
               </Flex>
               <Box w={"100%"} pl="5" pr="5">
-                <RadioGroup>
+                <RadioGroup defaultValue="1">
                   <Stack direction="column">
-                    <Radio value="1">
+                    <Radio value="1" colorScheme="orange">
                       <Flex alignItems={"center"}>
                         <Text fontSize={"25"} mr="20px">
-                          ₹1157
+                          ₹{data.price}
                         </Text>
-                        <Text fontSize={"15"}>₹119 93% off</Text>
+                        <Text fontSize={"15"} textDecor="line-through">
+                          ₹{data["strike-price"]}
+                        </Text>
+                        <Text fontSize={"15"} ml={"10px"}>
+                          {data["discount-percent"]} off
+                        </Text>
                       </Flex>
                     </Radio>
-                    <Radio value="2">
+                    <Radio value="2" colorScheme="orange">
                       <Flex alignItems={"center"}>
                         <Text fontSize={"25"} mr="20px">
-                          ₹1157
+                          ₹{data.price}
                         </Text>
                         <Text fontSize={"15"}>
                           + free shipping and 3% Extra
@@ -261,8 +298,29 @@ const SingleProductPage = ({ data }) => {
                     bg: "#fd7c70",
                   }}
                   color="#fff"
+                  onClick={() => {
+                    if (addText.length > 9) {
+                      dispatch(
+                        postCartData({
+                          title: data.title,
+                          src: data.src,
+                          packsize: data.packsize,
+                          price: data.price,
+                          "strike-price": data["strike-price"],
+                          "discount-percent": data["discount-percent"],
+                          qty: 1,
+                          rating: data.rating,
+                          CardRatingDetail: data.CardRatingDetail,
+                          description: data.description,
+                          category: data.category,
+                        })
+                      ).then(() => {
+                        setAddText("ADDED ✓");
+                      });
+                    }
+                  }}
                 >
-                  Add To Cart
+                  {addText}
                 </Button>
               </Box>
             </VStack>
@@ -387,6 +445,7 @@ const SingleProductPage = ({ data }) => {
                   alignSelf={"flex-start"}
                   fontSize={"14"}
                   mb={"10px"}
+                  p={0}
                 >
                   <ListItem ml={"15px"}>
                     Second-chance® sampling: 60 sec.
@@ -421,6 +480,7 @@ const SingleProductPage = ({ data }) => {
                   fontSize={"14"}
                   mb={"10px"}
                   spacing={5}
+                  p={0}
                 >
                   <ListItem ml={"15px"}>
                     Insert the CONTOUR®PLUS test strip, and the meter will
@@ -497,9 +557,7 @@ const SingleProductPage = ({ data }) => {
                     lg: "409px",
                   }}
                   bgColor="white"
-                  pl={2}
-                  pt={2}
-                  pr={2}
+                  p={5}
                 >
                   <Flex>
                     <VStack>
@@ -627,9 +685,7 @@ const SingleProductPage = ({ data }) => {
           </Text>
           <Flex flexWrap={"wrap"}>
             {Dummydata?.map((item, i) => {
-              // return <Link key={i + 1} href={`products/${item.id}`}>
-              return <ProductCard key={i + 1} {...item} />;
-              // </Link>
+              return <ProductCard key={item._id} {...item} />;
             })}
           </Flex>
         </Stack>
