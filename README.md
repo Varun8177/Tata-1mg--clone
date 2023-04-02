@@ -5,7 +5,7 @@
 <h2 align="center">🖥️ Tech Stack</h2>
 
 
-<h4 align="center">Frontend:</h4>
+<!-- <h4 align="center">Frontend:</h4> -->
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="reactjs" />
@@ -116,7 +116,7 @@ We made this project within 5 days
 
 ## Getting Started
 
-This project was built using React, Chakra UI, HTML, CSS, JavaScript, MongoDB, Express, NodeJS. It is an e-commerce web application and for running on your local environment you should follow these guidelines.
+This project was built using Next-Js, Chakra UI, HTML, CSS, JavaScript, MongoDB, Express, NodeJS. It is an e-commerce web application and for running on your local environment you should follow these guidelines.
 
 
 <br />
