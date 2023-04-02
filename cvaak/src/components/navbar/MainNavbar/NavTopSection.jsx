@@ -46,7 +46,7 @@ const NavTopSection = () => {
 
   useEffect(() => {
     dispatch(userStatusUpdate());
-    dispatch(getCartData());
+    // dispatch(getCartData());
   }, []);
 
   return (

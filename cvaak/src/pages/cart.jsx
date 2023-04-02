@@ -40,23 +40,22 @@ import EmptyCart from "@/components/EmptyCart";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
- 
+
   const router = useRouter();
 
   const handleDelete = (id) => {
-    fetch(
-      `https://black-skirt.cyclic.app/cart/delete/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          auth: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDI3MDRjNjlkMDM0YTg4ZTlkZjkyY2MiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODAzNDE0OTN9.tZa5svZf2PC6Z-tFK6mvQ6e5d6XsTRWAeiDvBQ0wP8Y`,
-        },
-      }
-    ).then(() => {
-      setCart(cart.filter((c) => c._id !== id));
-    }).catch((error) => {
-      console.error("Error deleting item from cart:", error);
-    });
+    fetch(`https://black-skirt.cyclic.app/cart/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        auth: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then(() => {
+        setCart(cart.filter((c) => c._id !== id));
+      })
+      .catch((error) => {
+        console.error("Error deleting item from cart:", error);
+      });
   };
 
   const handleAddProduct = (cart_id) => {
@@ -66,8 +65,8 @@ const Cart = () => {
     if (quantity > 1) setQuantity((quantity) => quantity - 1);
   };
 
-  const [total,setTotal]=useState(0)
-  
+  const [total, setTotal] = useState(0);
+
   // const itemPrice = cart?.reduce((price, ele) => price + ele.price + ele.qty, 0);
   // const taxPrice = itemPrice * 0.14;
   // const shippingPrice = itemPrice > 2000 ? 0 : 50;
@@ -75,13 +74,11 @@ const Cart = () => {
   // const totalPrice = 0;
   // const totalCart=0
 
-  const handleTotal=(value)=>{
-    setTotal(total+value)
-  }
+  const handleTotal = (value) => {
+    setTotal(total + value);
+  };
 
-  useEffect(()=>{
-    
-  },[])
+  useEffect(() => {}, []);
 
   const Dummydata = [
     // {
@@ -149,16 +146,19 @@ const Cart = () => {
   useEffect(() => {
     fetch(`https://black-skirt.cyclic.app/cart`, {
       headers: {
-        auth: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDI3MDRjNjlkMDM0YTg4ZTlkZjkyY2MiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODAzNDE0OTN9.tZa5svZf2PC6Z-tFK6mvQ6e5d6XsTRWAeiDvBQ0wP8Y`,
+        auth: `Bearer ${localStorage.getItem("token")}`,
       },
     })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
         setCart(res);
-        const itemPrice = res?.reduce((price, ele) => price + ele.price + ele.qty, 0);
-    console.log(itemPrice)
-   setTotal(itemPrice)
+        const itemPrice = res?.reduce(
+          (price, ele) => price + ele.price + ele.qty,
+          0
+        );
+        console.log(itemPrice);
+        setTotal(itemPrice);
       })
 
       .catch((err) => console.log(err));
@@ -193,7 +193,11 @@ const Cart = () => {
           >
             <Box style={{ border: "0px solid yellow" }}>
               {cart?.map((ele) => (
-                <CartPrice ele={ele} handleDelete={handleDelete} handleTotal={handleTotal}/>
+                <CartPrice
+                  ele={ele}
+                  handleDelete={handleDelete}
+                  handleTotal={handleTotal}
+                />
               ))}
             </Box>
             <Box
@@ -312,8 +316,8 @@ const Cart = () => {
                     onClick={() => router.push("/payment")}
                     style={{
                       marginLeft: "1%",
-                      marginTop:"10px",
-                      width:"95%",
+                      marginTop: "10px",
+                      width: "95%",
                       backgroundColor: "red",
                       color: "white",
                     }}

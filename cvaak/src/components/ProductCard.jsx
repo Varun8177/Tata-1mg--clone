@@ -31,11 +31,13 @@ const ProductCard = (props) => {
   }, []);
 
   useEffect(() => {
-    cartData?.forEach((item) => {
-      if (item.title === props.title) {
-        setAddText("ADDED ✓");
-      }
-    });
+    if (cartData) {
+      cartData.forEach((item) => {
+        if (item.title === props.title) {
+          setAddText("ADDED ✓");
+        }
+      });
+    }
   }, []);
 
   return (
