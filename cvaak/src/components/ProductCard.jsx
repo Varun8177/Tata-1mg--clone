@@ -9,23 +9,35 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useToast } from "@chakra-ui/react";
+import { getCartData, postCartData } from "@/redux/cart/cart.action";
 
 const ProductCard = (props) => {
-  // const cartData = useSelector((state) => state.AdminReducer.cart);
-  // const { isAuth } = useSelector((state) => state.authReducer);
-  const [isAuth, setIsAuth] = useState(true);
+  const { isAuth } = useSelector((state) => state.authReducer);
+  const cartData = useSelector((state) => state.CartReducer.products);
   const [addText, setAddText] = useState("ADD");
   const router = useRouter();
   const toast = useToast();
   const dispatch = useDispatch();
   const goToSingleProductPage = () => {
-    router.push(`products/${props._id}`);
-    console.log(props._id);
+    router.push(`/products/${props._id}`);
   };
+
+  useEffect(() => {
+    dispatch(getCartData());
+  }, []);
+
+  useEffect(() => {
+    cartData?.forEach((item) => {
+      if (item.title === props.title) {
+        setAddText("ADDED ✓");
+      }
+    });
+  }, []);
+
   return (
     <GridItem
       w="240px"
@@ -106,8 +118,23 @@ const ProductCard = (props) => {
             color: "white",
           }}
           onClick={() => {
-            isAuth && dispatch({ type: AddCartItem, payload: props });
-            // console.log(cartData);
+            if (isAuth && addText.length === 3) {
+              dispatch(
+                postCartData({
+                  title: props.title,
+                  src: props.src,
+                  packsize: props.packsize,
+                  price: props.price,
+                  "strike-price": props["strike-price"],
+                  "discount-percent": props["discount-percent"],
+                  qty: 1,
+                  rating: props.rating,
+                  CardRatingDetail: props.CardRatingDetail,
+                  description: props.description,
+                  category: props.category,
+                })
+              );
+            }
             if (!isAuth) {
               toast({
                 title: "Product cannot be added.",
