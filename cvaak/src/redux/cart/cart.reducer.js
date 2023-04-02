@@ -22,6 +22,9 @@ const CartReducer = (state = initialState, action) => {
         case types.ADD_ITEM_SUCCESS: {
             return { ...state, products: [payload, ...state.products], isLoading: false }
         }
+        case types.RESETCART: {
+            return { ...state, products: [] }
+        }
         default: {
             return state;
         }

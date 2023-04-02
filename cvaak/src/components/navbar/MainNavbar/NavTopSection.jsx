@@ -81,7 +81,7 @@ const NavTopSection = () => {
         alignItems={"center"}
       >
         <Link href={"/"}>
-          <Image src={"/cvaak.jpeg"} height={"50"} alt={"logo"} width={"120"} />
+          <Image src={"/cvaak.png"} height={"50"} alt={"logo"} width={"160"} />
         </Link>
         <Hide breakpoint="(max-width: 397px)">
           <Text
