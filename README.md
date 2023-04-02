@@ -67,7 +67,7 @@ We made this project within 5 days
 ## Glimpses of Bookwik.com :
 <table>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221469575-0f33dab2-0611-4792-ae11-4dbfbaa414e2.PNG"  alt="home" /></td>
+    <td><img src="https://user-images.githubusercontent.com/107903370/229373136-54efcca0-f011-4eab-aee3-7d0d2a4c6a45.png"  alt="home" /></td>
   </tr>
   <br/>
   <tr>
