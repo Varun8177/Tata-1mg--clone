@@ -28,6 +28,7 @@ import {
   Textarea,
   useDisclosure,
   useToast,
+  VStack
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -62,6 +63,7 @@ const AdminProducts = () => {
   };
   useEffect(() => {
     dispatch(GetRequest());
+  
   }, []);
 
   return (
@@ -80,12 +82,12 @@ const AdminProducts = () => {
           bgColor={"white"}
           pt={"20px"}
           w={"100%"}
-          h={"80vh"}
+          h={"100vh"}
           m={"auto"}
           mt="30px"
         >
           <Flex justifyContent={"space-around"} borderBottomWidth={1} pb={"5"}>
-            <Input placeholder="Search by name " variant={"filled"} w={"50%"} />
+            <Input placeholder="Search by name " variant={"filled"} w={"50%"} onChange={(e)=> setquery(e.target.value)} />
             <Menu>
               <MenuButton
                 _hover={{ bgColor: "500" }}
@@ -98,31 +100,31 @@ const AdminProducts = () => {
               <MenuList>
                 <MenuItem
                   onClick={() => {
-                    dispatch(FilterProd("Skin Care"));
+                    dispatch(FilterProd("calcium"));
                   }}
                 >
-                  Skin Care
+                  Calcium
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
-                    dispatch(FilterProd("Nutritional Deficiencies"));
+                    dispatch(FilterProd("supplement"));
                   }}
                 >
-                  Nutritional Deficiencies
+                  Supplement
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
-                    dispatch(FilterProd("Mind Care"));
+                    dispatch(FilterProd("fitness"));
                   }}
                 >
-                  Mind Care
+                  Fitness
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
-                    dispatch(FilterProd("Joint & Muscle Care"));
+                    dispatch(FilterProd("hygiene"));
                   }}
                 >
-                  Joint & Muscle Care
+                 Hygiene
                 </MenuItem>
               </MenuList>
             </Menu>
@@ -149,7 +151,7 @@ const AdminProducts = () => {
             </Button>
           </Flex>
 
-          <Grid templateColumns={"repeat(3,1fr)"} p={"5"} gap={"5"}>
+          <Grid templateColumns={"repeat(3,1fr)"} p={"5"} gap={"5"} h={"600px"} > 
             {data.length > 0 &&
               data
                 .filter((item, i) => {
@@ -157,16 +159,16 @@ const AdminProducts = () => {
                 })
                 .map((item) => {
                   return (
-                    <Flex key={item.id}>
+                    <Flex key={item._id}>
                       <Image
                         src={item.src}
-                        alt={item.id}
+                        alt={item._id}
                         w={"100px"}
                         h={"100px"}
                         objectFit={"contain"}
                       />
                       <Stack>
-                        <Text>{item.title.substr(0, 29)}...</Text>
+                        <Text>Title: {item.title.substr(0, 29)}</Text>
                         <Text>Price: {item.price}</Text>
                         {/* <Text>{item.title.substr(0, 29)}...</Text> */}
                         <Flex>
@@ -198,9 +200,27 @@ function EditButton({ item }) {
   const [title, setTitle] = useState(item.title);
   const [price, setPrice] = useState(item.price);
 
-  const upload = (event) => {
-    console.log(event.target.files[0]);
-    setSelectedImage(URL.createObjectURL(event.target.files[0]));
+  const upload = async(event) => {
+    // console.log(event.target.files[0]);
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      formData.append("upload_preset", "vmtbjhvd");
+
+      try {
+        const response =  await axios.post(
+          "https://api.cloudinary.com/v1_1/dgze3lj0n/image/upload",
+          formData
+        );
+
+        console.log(response.data.secure_url);
+        setSelectedImage(response.data.secure_url);
+        
+      } catch (error) {
+        console.error(error, "Error uploading image. Please try again.");
+      }
+    }
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -239,7 +259,7 @@ function EditButton({ item }) {
                 <Button>No</Button>
                 <Button
                   onClick={() => {
-                    dispatch(DeleteProd(item.id));
+                    dispatch(DeleteProd(item._id));
                   }}
                 >
                   Yes
@@ -284,7 +304,8 @@ function EditButton({ item }) {
                 w={"100%"}
                 justifyContent={"space-around"}
               >
-                <Image
+                {selectedImage ? (
+                  <Image
                   objectFit={"contain"}
                   borderRadius={"10px"}
                   alt="not found"
@@ -292,6 +313,8 @@ function EditButton({ item }) {
                   h={"100px"}
                   src={selectedImage}
                 />
+                ): null }
+                
                 <Stack>
                   <input type="file" name="myImage" onChange={upload} />
                   {selectedImage ? (
@@ -303,14 +326,14 @@ function EditButton({ item }) {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
+            <Button colorScheme="blue" mr={3} onClick={ () => dispatch(GetRequest()) }>
               Close
             </Button>
             <Button
               variant="ghost"
               onClick={() => {
                 const changes = { title: title, price, src: selectedImage };
-                dispatch(UpdateProd(item.id, changes));
+                dispatch(UpdateProd(item._id, changes));
               }}
             >
               Update Product
@@ -329,8 +352,9 @@ function AddProduct() {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
-  // const [strike-price, setstrike-price] = 
-  // const [discount-percent, setdiscount-percent] = useState("");
+  
+  const [strikeprice, setstrikePrice] = useState("238")
+  const [discountPercent, setDiscountPercent] = useState("12%")
   const [maxQty, setmaxQty] = useState(0);
   const [rating, setrating] = useState(0);
   const [CardRatingDetail, setCardRatingDetail] = useState("");
@@ -338,13 +362,48 @@ function AddProduct() {
 
   const toast = useToast();
   const [toastDelay, setToastDelay] = useState(false);
+
+  let payload = {
+    title,
+    price,
+    description,
+    "src":selectedImage,
+    maxQty,
+    rating,
+    CardRatingDetail,
+    category,
+"strike-price":strikeprice,
+"discount-percent":discountPercent
+  }
+
+
+
   const dispatch = useDispatch();
   const OverlayOne = () => (
     <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px) " />
   );
 
-  const upload = (event) => {
-    setSelectedImage(URL.createObjectURL(event.target.files[0]));
+  const upload = async(event) => {
+    // setSelectedImage(URL.createObjectURL(event.target.files[0]));
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      formData.append("upload_preset", "vmtbjhvd");
+
+      try {
+        const response = await axios.post(
+          "https://api.cloudinary.com/v1_1/dgze3lj0n/image/upload",
+          formData
+        );
+
+        console.log(response.data.secure_url);
+        setSelectedImage(response.data.secure_url);
+        
+      } catch (error) {
+        console.error(error, "Error uploading image. Please try again.");
+      }
+    }
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -361,26 +420,30 @@ function AddProduct() {
       >
         Add Product
       </Button>
-      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+      <Modal isCentered isOpen={isOpen} onClose={onClose} >
         {overlay}
-        <ModalContent preserveScrollBarGap>
-          <ModalHeader>Add New Product</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody preserveScrollBarGap={true}>
-            <FormControl isRequired>
-              <FormLabel>Title</FormLabel>
+        <ModalContent  w={"700px"} bg={"white"}  >
+          <ModalHeader  w={"700px"} bg={"white"}>Add New Product</ModalHeader>
+          {/* <ModalCloseButton /> */}
+          <ModalBody w={"700px"} bg={"white"} >
+            <FormControl >
+              <Flex w="100%" justifyContent="space-between">
+                <VStack w="45%">
+                <FormLabel  alignSelf={"flex-start"}>Title</FormLabel>
               <Input
                 placeholder="enter title here"
                 onChange={(e) => setTitle(e.target.value)}
               />
-            </FormControl>
-            <FormControl isRequired>
-              <FormLabel>Price</FormLabel>
+                </VStack>
+                <VStack w="45%">
+                <FormLabel  alignSelf={"flex-start"}>Price</FormLabel>
               <Input
                 placeholder="enter price here"
                 type={"number"}
                 onChange={(e) => setPrice(e.target.value)}
               />
+                </VStack>
+              </Flex>
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Description</FormLabel>
@@ -391,29 +454,31 @@ function AddProduct() {
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel>maxQty</FormLabel>
+            <Flex w="100%" justifyContent="space-between">
+            <VStack w="45%">
+              <FormLabel  alignSelf={"flex-start"}>maxQty</FormLabel>
               <Input
                 placeholder="enter price here"
                 type={"number"}
                 onChange={(e) => setmaxQty(e.target.value)}
               />
-            </FormControl>
-
-            <FormControl isRequired>
-              <FormLabel>Rating</FormLabel>
+              </VStack>
+              <VStack w="45%">
+              <FormLabel  alignSelf={"flex-start"}>Rating</FormLabel>
               <Input
                 placeholder="enter price here"
                 type={"number"}
                 onChange={(e) => setrating(e.target.value)}
               />
-
+              </VStack>
+            </Flex>
             </FormControl>
 
             <FormControl isRequired>
               <FormLabel>CardRatingDetail</FormLabel>
               <Textarea
                 placeholder="enter CardRatingDetail here"
-                onChange={(e) => CardRatingDetail(e.target.value)}
+                onChange={(e) => setCardRatingDetail(e.target.value)}
               />
             </FormControl>
 
@@ -452,7 +517,7 @@ function AddProduct() {
               </Flex>
             </FormControl>
           </ModalBody>
-          <ModalFooter>
+          <ModalFooter  w={"700px"} bg={"white"}>
             <Button onClick={onClose} mr={"10"}>
               Close
             </Button>
@@ -466,18 +531,7 @@ function AddProduct() {
                   selectedImage !== null
                 ) {
                   dispatch(
-                    AddProd({
-                      title: title,
-                      src: selectedImage,
-                      price : price,
-                      // strike-price: strike-price ,
-                      // discount-percent: discount-percent,
-                      maxQty: maxQty,
-                     rating: rating,
-                      CardRatingDetail: CardRatingDetail ,
-                      description: description,
-                      category: category
-                    })
+                    AddProd(payload)
                   );
                   toast({
                     title: `Successfully created product`,
