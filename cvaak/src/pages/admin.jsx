@@ -1,4 +1,4 @@
-import Sidebar from "@/components/admin/sideview"
+import Sidebar from "@/components/admin/Sideview";
 import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Boxes from "@/components/admin/Boxes";
@@ -17,10 +17,10 @@ import {
 import { getData } from "@/redux/products/products.action";
 
 const Admin = () => {
- //  const prod = useSelector((store) => store.AdminReducer.products);
-   const data = useSelector((store) => store.AdminReducer.userData);
+  //  const prod = useSelector((store) => store.AdminReducer.products);
+  const data = useSelector((store) => store.AdminReducer.userData);
   const prod = useSelector((store) => store.ProductReducer.products);
-   const Orderdata = useSelector((store) => store.AdminReducer.orders);
+  const Orderdata = useSelector((store) => store.AdminReducer.orders);
   // const AdminName = useSelector((store) => store.AdminReducer.Admins);
   const dispatch = useDispatch();
   // const { isAuth, userName } = useSelector((state) => state.authReducer);
@@ -66,7 +66,10 @@ const Admin = () => {
         backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
       },
     ],
-  };{console.log(prod)}
+  };
+  {
+    console.log(prod);
+  }
   return (
     <>
       {/* <CartNavbar /> */}
@@ -121,18 +124,28 @@ const Admin = () => {
             >
               <Boxes
                 color={"#577590"}
-                 value={prod?.length}
-                 
+                value={prod?.length}
                 text={"Total Products"}
                 location={"/admin/productdetails"}
-                src={"https://user-images.githubusercontent.com/107903370/229277637-f24596f8-7f0d-4d2e-9347-b2d87656b6d0.jpg"}
+                src={
+                  "https://user-images.githubusercontent.com/107903370/229277637-f24596f8-7f0d-4d2e-9347-b2d87656b6d0.jpg"
+                }
               />
-              <Boxes color={"#43aa8b"} value={"1 0"} text={"Users online"} src={"https://user-images.githubusercontent.com/107903370/229278170-dc210e2b-2b17-452e-9788-c88fd2077187.jpg"} />
+              <Boxes
+                color={"#43aa8b"}
+                value={"1 0"}
+                text={"Users online"}
+                src={
+                  "https://user-images.githubusercontent.com/107903370/229278170-dc210e2b-2b17-452e-9788-c88fd2077187.jpg"
+                }
+              />
               <Boxes
                 color={"#90be6d"}
                 // value={String(total).split("").join(" ")}
                 text={"orders"}
-                src={"https://icon2.cleanpng.com/20180614/aue/kisspng-computer-icons-purchase-order-purchasing-order-form-5b22a7babdcb73.7441057115289978187774.jpg"}
+                src={
+                  "https://icon2.cleanpng.com/20180614/aue/kisspng-computer-icons-purchase-order-purchasing-order-form-5b22a7babdcb73.7441057115289978187774.jpg"
+                }
               />
             </Grid>
             <Grid
@@ -162,7 +175,7 @@ const Admin = () => {
                 }}
                 borderRadius={"10px"}
               >
-                <Bar data={userData}   />
+                <Bar data={userData} />
               </Box>
               <Box
                 mt={{
@@ -184,7 +197,7 @@ const Admin = () => {
                 borderRadius={"10px"}
               >
                 {" "}
-                <Pie data={OrdersData}  />
+                <Pie data={OrdersData} />
               </Box>
             </Grid>
           </Box>

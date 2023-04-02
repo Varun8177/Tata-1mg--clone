@@ -5,17 +5,10 @@ import {
   Grid,
   Heading,
   Hide,
-  Menu,
   Show,
   Stack,
-  Table,
-  Tbody,
-  Td,
   Text,
-  Th,
-  Thead,
   Tooltip,
-  Tr,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -26,7 +19,7 @@ import { SiSketchfab } from "react-icons/si";
 
 const Sidebar = () => {
   const [domLoaded, setDomLoaded] = useState(false);
-  const [show, setshow] = useState(true);
+  const [view, setview] = useState(true);
   const router = useRouter();
   useEffect(() => {
     setDomLoaded(true);
@@ -37,8 +30,8 @@ const Sidebar = () => {
       {domLoaded && (
         <>
           <Hide below="md">
-            <Flex bgcolor={"white"} w={show ? "220px" : "80px"}>
-              {show ? (
+            <Flex bgcolor={"white"} w={view ? "220px" : "80px"}>
+              {view ? (
                 <Stack w={"150px"} m={"auto"} h={"80vh"} textAlign={"center"}>
                   <Heading
                     ml={"15px"}
@@ -86,7 +79,6 @@ const Sidebar = () => {
                     }}
                   >
                     <FiActivity /> Activity
-
                   </Grid>
                   <br />
                   <hr />
@@ -200,17 +192,15 @@ const Sidebar = () => {
                 w={"30px"}
                 alignSelf={"flex-end"}
                 onClick={() => {
-                  setshow(!show);
+                  setview(!view);
                 }}
                 _hover={{ bgcolor: "white" }}
               >
-                {show ? <ArrowLeftIcon /> : <ArrowRightIcon />}
+                {view ? <ArrowLeftIcon /> : <ArrowRightIcon />}
               </Button>
             </Flex>
           </Hide>
-          <Show below="md">
-            <Menu></Menu>
-          </Show>
+          <Show below="md">{/* <Menu></Menu> */}</Show>
         </>
       )}
     </>
