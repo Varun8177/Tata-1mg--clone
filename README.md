@@ -1,6 +1,6 @@
 <h1 align="center">CVAAK which is a replica of TATA 1MG.com</h1>
 <br />
-<strong>Bookwik.com  is Next-JS e-commerce web application that allows you to buy medicines online with effortable prices. It has a variety of categories, just visit the product listing page and you will see all the products, apply filters as per your need and in just a few clicks you can buy any products from the website. This project is just for educational purpose.</strong>
+<strong>CVAAK is Next-JS e-commerce web application that allows you to buy medicines online with effortable prices. It has a variety of categories, just visit the product listing page and you will see all the products, apply filters as per your need and in just a few clicks you can buy any products from the website. This project is just for educational purpose.</strong>
 
 <h2 align="center">🖥️ Tech Stack</h2>
 
