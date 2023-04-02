@@ -22,7 +22,6 @@ const Products = () => {
   const [sort, setSort] = useState("");
   const [order, setOrder] = useState("asc");
   const dispatch = useDispatch();
-  // console.log(loading);
 
   let pageSize = 8;
   let items = 38;
@@ -53,6 +52,9 @@ const Products = () => {
     dispatch(getData(sort, order));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  // useEffect(() => {
+  //   dispatch(getCartData());
+  // }, [cartData]);
 
   return (
     <>

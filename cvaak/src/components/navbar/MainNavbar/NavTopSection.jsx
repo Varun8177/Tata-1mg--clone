@@ -30,14 +30,13 @@ import { GiMeditation } from "react-icons/gi";
 import { ImLab } from "react-icons/im";
 import { TbDiscount2, TbHelp } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-// import { GETADMINSDATA, RESETCART } from "@/redux/admin/admin.types";
-// import { GetAdminDataRequest } from "@/redux/admin/admin.action";
 import Link from "next/link";
 import { userLogout, userStatusUpdate } from "@/redux/auth/action";
+import { getCartData } from "@/redux/cart/cart.action";
 
 const NavTopSection = () => {
   const { isAuth, userName, admin } = useSelector((state) => state.authReducer);
-  //   const cartData = useSelector((state) => state.AdminReducer.cart);
+  const cartData = useSelector((state) => state.CartReducer.products);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -47,6 +46,7 @@ const NavTopSection = () => {
 
   useEffect(() => {
     dispatch(userStatusUpdate());
+    dispatch(getCartData());
   }, []);
 
   return (
@@ -62,7 +62,6 @@ const NavTopSection = () => {
       justifyContent={"space-between"}
     >
       <Flex
-        // border={"1px solid red"}
         w={{
           base: "100%",
           sm: "100%",
@@ -269,7 +268,7 @@ const NavTopSection = () => {
                   icon={<AiOutlineShoppingCart size={"30"} />}
                   variant={"unstyled"}
                 />
-                {/* {cartData?.length >= 1 && (
+                {cartData?.length >= 1 && (
                   <MenuList zIndex={5}>
                     <Flex justifyContent={"space-around"} w={"100%"}>
                       <Text as={"b"}>Order Summary</Text>
@@ -291,7 +290,9 @@ const NavTopSection = () => {
                             ? cartData[cartData.length - 2].title.substr(0, 13)
                             : null}
                         </Text>
-                        <Text fontSize={13}>Qty:1</Text>
+                        <Text fontSize={13}>
+                          Qty:{cartData[cartData.length - 2].qty}
+                        </Text>
                       </Flex>
                     )}
                     <MenuItem>
@@ -308,7 +309,7 @@ const NavTopSection = () => {
                       </Text>
                     </MenuItem>
                   </MenuList>
-                )} */}
+                )}
               </Menu>
               <Text
                 color={"white"}
@@ -321,7 +322,7 @@ const NavTopSection = () => {
                 textAlign={"center"}
                 zIndex={2}
               >
-                {/* {cartData.length} */}0
+                {cartData?.length}
               </Text>
             </Flex>
           </>
