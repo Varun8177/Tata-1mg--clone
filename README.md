@@ -87,24 +87,24 @@ We made this project within 5 days
   </tr>
   <br/>
    <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221470291-0ad5a6a4-6b88-4bca-bed4-1e265630ca10.PNG"   alt="" /></td>
+    <td><img src="https://user-images.githubusercontent.com/107903370/229374956-25aab4b5-ac20-4ec4-bbba-b24a68b47193.png"   alt="" /></td>
   </tr>
   <br/>
   <br/>
    <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221470328-09baa2dd-50b5-4317-801c-9baf65e7c07d.PNG"   alt="" /></td>
+    <td><img src="https://user-images.githubusercontent.com/107903370/229375032-aeacc34b-3479-4c57-9a31-c9d137d71648.png"   alt="" /></td>
   </tr>
   <br/>
    <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221470423-c7311b72-da3a-42b3-a40b-fc9a7ba906aa.PNG"   alt="" /></td>
+    <td><img src="https://user-images.githubusercontent.com/107903370/229375089-7b0156f5-e852-4dd0-a5fd-a40caa883dbd.png"   alt="" /></td>
   </tr>
   <br/>
     <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221470870-ea73a76b-0e75-479b-af59-285190094e56.PNG"   alt="" /></td>
+    <td><img src="https://user-images.githubusercontent.com/107903370/229375158-5b87f8ec-8f67-43a9-b5cc-53f5607429e9.png"   alt="" /></td>
   </tr>
   <br/>
       <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221471003-4d877b60-128d-40e3-b5dd-f48638d8f713.PNG"   alt="" /></td>
+    <td><img src="https://user-images.githubusercontent.com/107903370/229375221-b36dd1cd-b44e-46c2-bee3-3c45b6d8ccd9.png"   alt="" /></td>
   </tr>
   <br/>
 
