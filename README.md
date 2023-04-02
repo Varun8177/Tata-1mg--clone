@@ -126,7 +126,7 @@ This project was built using Next-Js, Chakra UI, HTML, CSS, JavaScript, MongoDB,
 If you want to contact us, you can reach me through below handles. <br />
 
 
-[![linkedin](https://img.shields.io/badge/Rajesh_Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rajeshdeo/)
+[![linkedin](https://img.shields.io/badge/Varun_Ergurala-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/varun8177/)
 [![GitHub](https://img.shields.io/badge/Rajesh_Kumar-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/rajeshdeo)
 
 [![linkedin](https://img.shields.io/badge/Chandra_Sekhar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://github.com/Gedelachandrasekhar126396)
