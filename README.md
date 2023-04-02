@@ -127,20 +127,20 @@ If you want to contact us, you can reach me through below handles. <br />
 
 
 [![linkedin](https://img.shields.io/badge/Varun_Ergurala-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/varun8177/)
-[![GitHub](https://img.shields.io/badge/Rajesh_Kumar-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/rajeshdeo)
+[![GitHub](https://img.shields.io/badge/Rajesh_Kumar-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/Varun8177)
 
-[![linkedin](https://img.shields.io/badge/Chandra_Sekhar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://github.com/Gedelachandrasekhar126396)
+[![linkedin](https://img.shields.io/badge/Aman_Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aman-kumar-1a3047194/)
+[![GitHub](https://img.shields.io/badge/Aman_Kumar-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/AmanKumarWeb19)
+
+[![linkedin](https://img.shields.io/badge/Abhishek_Jha-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abhishekjha96/)
+[![GitHub](https://img.shields.io/badge/Abhishek_Jha-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/Abhishekjha1996)
+
+
+[![linkedin](https://img.shields.io/badge/Kalpita_Gawas-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kalpita-gawas-76177a213/)
+[![GitHub](https://img.shields.io/badge/Kalpita_Gawas-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/kalpitagavas)
+
+[![linkedin](https://img.shields.io/badge/Chandra_Sekhar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gedela-chandra-2b4a64246/)
 [![GitHub](https://img.shields.io/badge/Chandra_Sekhar-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/Gedelachandrasekhar126396)
-
-[![linkedin](https://img.shields.io/badge/Neha_Kumari-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/guptaneha0111/)
-[![GitHub](https://img.shields.io/badge/Neha_Kumari-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/guptaneha0111)
-
-
-[![linkedin](https://img.shields.io/badge/Prajwalhg-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://github.com/mazerunner321)
-[![GitHub](https://img.shields.io/badge/Prajwalhg-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/mazerunner321)
-
-[![linkedin](https://img.shields.io/badge/Santosh_Sharma-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aditya-anand-2b795a239/)
-[![GitHub](https://img.shields.io/badge/Santosh_Sharma-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/AdityaBr11/)
 
 
 
