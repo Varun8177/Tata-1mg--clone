@@ -64,14 +64,14 @@ We made this project within 5 days
 <br />
 
 
-## Glimpses of Bookwik.com :
+## Glimpses of CVAAK.com :
 <table>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/107903370/229373136-54efcca0-f011-4eab-aee3-7d0d2a4c6a45.png"  alt="home" /></td>
   </tr>
   <br/>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221469982-d93d8c3b-cbb0-4a24-bd25-a5f89668c2bb.PNG"  alt="" /></td>
+    <td><img src="https://user-images.githubusercontent.com/107903370/229373764-2e78aa33-3121-4827-96bb-9db99eff8d50.png"  alt="" /></td>
   </tr>
   <br/>
   <tr>
