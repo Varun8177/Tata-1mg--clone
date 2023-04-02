@@ -13,16 +13,9 @@ import React from "react";
 const CartNavbar = () => {
   return (
     <Flex
-      ml={{
-        base: "5px",
-        sm: "5px",
-        md: "5px",
-        lg: "20px",
-        xl: "20px",
-        "2xl": "20px",
-      }}
       justifyContent={"space-between"}
       alignItems={"center"}
+      bgColor={"white"}
     >
       <Flex
         w={{
@@ -37,8 +30,9 @@ const CartNavbar = () => {
       >
         <Link href={"/"}>
           <Image
-            src={"/healthPrimeLogo.png"}
-            height={"50"}
+            p={"2"}
+            src={"/cvaak.png"}
+            height={"100"}
             alt={"logo"}
             width={"120"}
           />

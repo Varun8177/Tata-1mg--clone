@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
+  Box,
   Button,
   Image,
   Input,
@@ -17,8 +18,32 @@ import {
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
-import { RESETCART } from "@/redux/admin/admin.types";
-import { useDispatch } from "react-redux";
+import { RESETCART } from "@/redux/cart/cart.types";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartData, resetCart } from "@/redux/cart/cart.action";
+
+function calculateTotalDiscount(products) {
+  let total = 0;
+  let totalSavings = 0;
+  let totalDiscount = 0;
+  let totalBeforeDiscount = 0;
+
+  for (let i = 0; i < products.length; i++) {
+    const price = products[i].price;
+    const discount = parseInt(products[i]["discount-percent"]);
+
+    const savings = price * (discount / 100);
+    const discountedPrice = price - savings;
+    const discountAmount = price - discountedPrice;
+
+    totalBeforeDiscount += price;
+    total += discountedPrice;
+    totalSavings += savings;
+    totalDiscount += discountAmount;
+  }
+
+  return { total, totalSavings, totalDiscount, totalBeforeDiscount };
+}
 
 export default function Cardpayment() {
   const [cards, setCards] = useState("true");
@@ -39,7 +64,6 @@ export default function Cardpayment() {
     }
   };
 
-  console.log(empty);
   const router = useRouter();
   const toast = useToast();
   useEffect(() => {
@@ -73,6 +97,8 @@ export default function Cardpayment() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [overlay, setOverlay] = React.useState(<OverlayOne />);
     const [check, setCheck] = useState("");
+    const router = useRouter();
+    const dispatch = useDispatch();
 
     return (
       <>
@@ -139,7 +165,7 @@ export default function Cardpayment() {
                 color={"white"}
                 onClick={() => {
                   if (check == captcha) {
-                    // dispatch({ type: RESETCART });
+                    dispatch(resetCart({ type: RESETCART }));
                     router.push("/final");
                   } else {
                     toast({
@@ -181,10 +207,31 @@ export default function Cardpayment() {
     );
   };
   const cardstructure = () => {
+    const cartData = useSelector((state) => state.CartReducer.products);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getCartData());
+    }, []);
+
+    useEffect(() => {
+      const { total, totalSavings, totalDiscount, totalBeforeDiscount } =
+        calculateTotalDiscount(cartData);
+      setTotal(total);
+      setTotalSavings(totalSavings);
+      setTotalDiscount(totalDiscount);
+      setTotalBeforeDiscount(totalBeforeDiscount);
+    }, []);
     return (
       <>
-        <div style={{ gap: "40px", backgroundColor: "white",width:"100%",border:"1px solid red"}}>
-          <div style={{ marginTop: "40px"}}>
+        <div
+          style={{
+            gap: "40px",
+            backgroundColor: "white",
+            width: "100%",
+          }}
+        >
+          <div style={{ marginTop: "40px" }}>
             <p style={{ fontSize: "14px", fontWeight: "bold" }}>
               Credit & bills
             </p>
@@ -265,11 +312,9 @@ export default function Cardpayment() {
             value={name}
           />
           <div style={{ marginTop: "20px" }}>
-            <Checkbox colorScheme="red" h={"50px"} w={"50px"}></Checkbox>
-            <p style={{ fontSize: "14px", fontWeight: "bold" }}>
-              Your card details will be saved securely for future transactions,
-              based on the industry standards.
-            </p>
+            <label style={{ marginTop: "30px" }}>
+              <input type="checkbox" />I agree to all terms and conditions
+            </label>
           </div>
           <div style={{ margin: "auto", marginTop: "10px" }}>
             <p style={{ fontSize: "10px", fontWeight: "bold" }}>
@@ -285,21 +330,25 @@ export default function Cardpayment() {
             }}
           >
             <Image
+              objectFit={"contain"}
               style={{ width: "20px", height: "20px" }}
               src="https://onemg.gumlet.io/marketing/7f77216d-f9fc-4740-8c10-be627b0b6005.jpg"
               alt=""
             />
             <Image
+              objectFit={"contain"}
               style={{ width: "20px", height: "20px" }}
               src="https://onemg.gumlet.io/marketing/0d7023e4-b2bb-4322-8ca0-3b917294e722.jpg"
               alt=""
             />
             <Image
+              objectFit={"contain"}
               style={{ width: "20px", height: "20px" }}
               src="https://onemg.gumlet.io/marketing/b0f4092b-f799-4bc8-af01-b28426f1b13e.jpg"
               alt=""
             />
             <Image
+              objectFit={"contain"}
               style={{ width: "20px", height: "20px" }}
               src="https://onemg.gumlet.io/marketing/ff2df2be-ddaf-4b6f-9be2-ea422f06633d.jpg"
               alt=""
@@ -309,8 +358,12 @@ export default function Cardpayment() {
       </>
     );
   };
+  const [total, setTotal] = useState(0);
+  const [totalSavings, setTotalSavings] = useState(0);
+  const [totalDiscount, setTotalDiscount] = useState(0);
+  const [totalBeforeDiscount, setTotalBeforeDiscount] = useState(0);
   return (
-    <>
+    <Box bgColor={"#fafafa"}>
       <CartNavbar />
       <div
         style={{
@@ -318,63 +371,13 @@ export default function Cardpayment() {
           justifyContent: "space-between",
           width: "80%",
           margin: "auto",
-          border: "0px solid red",
           backgroundColor: "#FAFAFA",
           marginTop: "30px",
         }}
       >
-        {/* <div
-          style={{
-            width: "20%",
-            border: "0px solid red",
-            height: "600px",
-            padding: "10px",
-            marginLeft:"40px",
-            backgroundColor: "#FFDEAD",
-          }}
-        >
-
-
-
-          <div >
-          <div
-               onClick={handleCard}
-               style={{
-                 display: "flex",
-                 gap: "30px",
-               backgroundColor: "white",
-                 boxShadow: " rgba(149, 157, 165, 0.2) 0px 8px 24px",
-                 marginBottom: "20px",
-                 marginTop:"100%"
-            }}
-             >
-              <Image
-                 src="https://onemg.gumlet.io/marketing/9b1695ca-b1a9-4893-9157-963047689acb.jpg"
-                 alt=""
-               />
-              <Text>CARDS</Text>
-           </div>
-           </div>
-          <div
-            onClick={handlecash}
-            style={{
-              display: "flex",
-              gap: "30px",
-              backgroundColor: "white",
-              boxShadow: " rgba(149, 157, 165, 0.2) 0px 8px 24px",
-            }}
-          >
-            <Image
-              src="https://onemg.gumlet.io/marketing/280ca862-d1ae-4025-999a-b37d0ef5b430.jpg"
-              alt=""
-            />
-            <Text>Pay on delivery</Text>
-          </div>
-        </div> */}
         <div
           style={{
             width: "40%",
-            border: "1px solid red",
             height: "auto",
             padding: "20px",
             backgroundColor: "white",
@@ -382,10 +385,15 @@ export default function Cardpayment() {
         >
           {cards ? cardstructure() : cashdel()}
         </div>
-        <div style={{ width: "40%", border: "0px solid red", height: "auto",border:"1px solid red" }}>
+        <div
+          style={{
+            width: "40%",
+            height: "auto",
+          }}
+        >
           <div
             style={{
-             height:"auto",
+              height: "auto",
               width: "95%",
               border: "0px solid red",
               marginTop: "50px",
@@ -417,11 +425,11 @@ export default function Cardpayment() {
                 display: "flex",
                 justifyContent: "space-between",
                 marginTop: "30px",
-                fontSize:"20px"
+                fontSize: "20px",
               }}
             >
               <Text fontSize={"12px"}>Item Total(MRP)</Text>
-              <Text fontSize={"12px"}>2000</Text>
+              <Text fontSize={"12px"}>₹{totalBeforeDiscount}</Text>
             </div>
             <div
               style={{
@@ -431,7 +439,7 @@ export default function Cardpayment() {
               }}
             >
               <Text fontSize={"12px"}>Price Discount</Text>
-              <Text fontSize={"12px"}>-₹591</Text>
+              <Text fontSize={"12px"}>-₹{totalDiscount}</Text>
             </div>
             <div
               style={{
@@ -469,7 +477,7 @@ export default function Cardpayment() {
               }}
             >
               <Text fontSize={"12px"}>To be paid</Text>
-              <Text fontSize={"12px"}>₹2643</Text>
+              <Text fontSize={"12px"}>₹{total}</Text>
             </div>
             <div
               style={{
@@ -484,7 +492,7 @@ export default function Cardpayment() {
               }}
             >
               <Text fontSize={"12px"}>Total Savings</Text>
-              <Text fontSize={"12px"}>₹591</Text>
+              <Text fontSize={"12px"}>₹{totalSavings}</Text>
             </div>
             <div
               style={{
@@ -504,6 +512,6 @@ export default function Cardpayment() {
           </div>
         </div>
       </div>
-    </>
+    </Box>
   );
 }
