@@ -5,18 +5,6 @@ import { reducer as authReducer } from "./auth/reducer"
 import AdminReducer from "./admin/admin.reducer"
 import adressReducer from "./adress/adress.reducer"
 
-<<<<<<< HEAD
-
-// const rootReducer = combineReducers({authReducer,
-//     AdminReducer,
-//     adressReducer})
-
-
-
-
-
-=======
->>>>>>> 4f3906031950dfb8c1b6f671a4d6caca66b3258d
 const rootReducer = combineReducers({
     authReducer,
     AdminReducer,
