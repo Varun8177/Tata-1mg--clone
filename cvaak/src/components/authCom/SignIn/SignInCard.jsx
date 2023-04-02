@@ -20,7 +20,7 @@ import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import SignInCarousel from "./SignInCarousel";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin } from "@/redux/auth/action";
+import { userLogin, userStatusUpdate } from "@/redux/auth/action";
 import { getCartData } from "@/redux/cart/cart.action";
 
 export default function SignInCard() {
@@ -47,6 +47,7 @@ export default function SignInCard() {
         })
         .then(() => {
           dispatch(getCartData());
+          dispatch(userStatusUpdate());
         });
     } catch (e) {
       console.log(e);

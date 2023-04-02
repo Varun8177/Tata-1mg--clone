@@ -35,13 +35,13 @@ export const PostUserDataRequest = (details) => async (dispatch) => {
 };
 
 export const GetOrdersDataRequest = () => async (dispatch) => {
-    dispatch({ type: types.LOADING })
-    try {
-        const res = await axios.get(`https://63f5d74059c944921f678f16.mockapi.io/orders`)
-        dispatch({ type: types.GETORDERSDATA, payload: res.data })
-    } catch (error) {
-        dispatch({ type: types.ERROR })
-    }
+  dispatch({ type: types.LOADING })
+  try {
+    const res = await axios.get(`https://63f5d74059c944921f678f16.mockapi.io/orders`)
+    dispatch({ type: types.GETORDERSDATA, payload: res.data })
+  } catch (error) {
+    dispatch({ type: types.ERROR })
+  }
 }
 
 // export const PostOrdersDataRequest = (details) => async (dispatch) => {
@@ -83,7 +83,7 @@ export const DeleteProd = (id) => async (dispatch) => {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        auth: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDI3MDRjNjlkMDM0YTg4ZTlkZjkyY2MiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODAzNDc3MzF9.ZlUL8Yby_MkpBA8KOzZZ0otnF811Wihexy43zycgqIc",
+        auth: `Bearer ${localStorage.getItem("token")}`,
       },
     }
   );
@@ -106,7 +106,7 @@ export const UpdateProd = (id, changes) => async (dispatch) => {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
-        auth: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDI3MDRjNjlkMDM0YTg4ZTlkZjkyY2MiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODAzNDc3MzF9.ZlUL8Yby_MkpBA8KOzZZ0otnF811Wihexy43zycgqIc",
+        auth: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(changes),
     }
@@ -123,7 +123,7 @@ export const AddProd = (details) => async (dispatch) => {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        auth: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDI3MDRjNjlkMDM0YTg4ZTlkZjkyY2MiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2ODAzNDc3MzF9.ZlUL8Yby_MkpBA8KOzZZ0otnF811Wihexy43zycgqIc",
+        auth: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(details),
     });
