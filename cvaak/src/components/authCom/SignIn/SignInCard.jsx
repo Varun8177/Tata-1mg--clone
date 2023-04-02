@@ -21,6 +21,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import SignInCarousel from "./SignInCarousel";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "@/redux/auth/action";
+import { getCartData } from "@/redux/cart/cart.action";
 
 export default function SignInCard() {
   const { isAuth, userName } = useSelector((state) => state.authReducer);
@@ -34,17 +35,19 @@ export default function SignInCard() {
   const handleLogin = () => {
     setLoad(true);
     try {
-      dispatch(userLogin({ email: loginEmail, password: loginPass })).then(
-        () => {
+      dispatch(userLogin({ email: loginEmail, password: loginPass }))
+        .then(() => {
           toast({
-            title: "Signup Successfull",
+            title: "sign-in Successfull",
             description: `welcome back`,
             status: "success",
             duration: 3000,
             isClosable: true,
           });
-        }
-      );
+        })
+        .then(() => {
+          dispatch(getCartData());
+        });
     } catch (e) {
       console.log(e);
     }
