@@ -306,12 +306,14 @@ const Cart = () => {
                     }}
                   >
                     Total Saving:
-                    <Box style={{ marginLeft: "60%" }}>{total}</Box>
+                    <Box style={{ marginLeft: "60%" }}>₹{total}</Box>
                   </Box>
                   <Button
                     onClick={() => router.push("/payment")}
                     style={{
-                      marginLeft: "80%",
+                      marginLeft: "1%",
+                      marginTop:"10px",
+                      width:"95%",
                       backgroundColor: "red",
                       color: "white",
                     }}

@@ -114,7 +114,7 @@ export default function Cardpayment() {
             <ModalBody>
               <div
                 style={{
-                  border: "1px solid",
+                  border: "1px solid ",
                   height: "40px",
                   width: "150px",
                   padding: "6px",
@@ -183,7 +183,7 @@ export default function Cardpayment() {
   const cardstructure = () => {
     return (
       <>
-        <div style={{ gap: "40px", backgroundColor: "white",width:"100%",border:"1px solid red"}}>
+        <div style={{ gap: "40px", backgroundColor: "white",width:"100%",border:"0px solid red"}}>
           <div style={{ marginTop: "40px"}}>
             <p style={{ fontSize: "14px", fontWeight: "bold" }}>
               Credit & bills
@@ -374,7 +374,7 @@ export default function Cardpayment() {
         <div
           style={{
             width: "40%",
-            border: "1px solid red",
+            border: "0px solid red",
             height: "auto",
             padding: "20px",
             backgroundColor: "white",
@@ -382,7 +382,7 @@ export default function Cardpayment() {
         >
           {cards ? cardstructure() : cashdel()}
         </div>
-        <div style={{ width: "40%", border: "0px solid red", height: "auto",border:"1px solid red" }}>
+        <div style={{ width: "40%", height: "auto",border:"0px solid red" }}>
           <div
             style={{
              height:"auto",
