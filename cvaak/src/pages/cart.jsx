@@ -18,7 +18,7 @@ import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 import Head from "next/head";
 import Footer from "@/components/footer";
 import axios from "axios";
-import CartPrice from "./cartPrice";
+import CartPrice from "../components/cartPrice";
 import { useRouter } from "next/router";
 import EmptyCart from "@/components/EmptyCart";
 
@@ -197,6 +197,7 @@ const Cart = () => {
                   ele={ele}
                   handleDelete={handleDelete}
                   handleTotal={handleTotal}
+                  key={ele._id}
                 />
               ))}
             </Box>
@@ -372,9 +373,7 @@ const Cart = () => {
               </Carousel>
 
               {Dummydata?.map((item, i) => {
-                // return <Link key={i + 1} href={`products/${item.id}`}>
                 return <ProductCard key={i + 1} {...item} />;
-                // </Link>
               })}
             </Flex>
           </Stack>

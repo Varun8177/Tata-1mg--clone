@@ -22,7 +22,7 @@ import { RESETCART } from "@/redux/cart/cart.types";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartData, resetCart } from "@/redux/cart/cart.action";
 
-function calculateTotalDiscount(products) {
+export function calculateTotalDiscount(products) {
   let total = 0;
   let totalSavings = 0;
   let totalDiscount = 0;
@@ -206,7 +206,7 @@ export default function Cardpayment() {
       </div>
     );
   };
-  const cardstructure = () => {
+  const Cardstructure = () => {
     const cartData = useSelector((state) => state.CartReducer.products);
     const dispatch = useDispatch();
 
@@ -405,7 +405,7 @@ export default function Cardpayment() {
             backgroundColor: "white",
           }}
         >
-          {cards ? cardstructure() : cashdel()}
+          {cards ? Cardstructure() : cashdel()}
         </div>
 
         <div style={{ width: "40%", height: "auto", border: "0px solid red" }}>
