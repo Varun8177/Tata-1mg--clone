@@ -27,7 +27,7 @@
 
 
 
-<h3 align="center"><a href="https://bookwik-project.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://perpetual-paper-4225.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
 <br />
 <p align="center">
   <br />&#10023;
@@ -127,7 +127,7 @@ If you want to contact us, you can reach me through below handles. <br />
 
 
 [![linkedin](https://img.shields.io/badge/Varun_Ergurala-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/varun8177/)
-[![GitHub](https://img.shields.io/badge/Rajesh_Kumar-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/Varun8177)
+[![GitHub](https://img.shields.io/badge/Varun_Ergurala-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/Varun8177)
 
 [![linkedin](https://img.shields.io/badge/Aman_Kumar-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aman-kumar-1a3047194/)
 [![GitHub](https://img.shields.io/badge/Aman_Kumar-0077B5?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/AmanKumarWeb19)
