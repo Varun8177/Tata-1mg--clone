@@ -75,15 +75,15 @@ We made this project within 5 days
   </tr>
   <br/>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221470073-56912f8a-cb3a-4094-a974-107b31ae0d04.PNG"  alt="" /></td>
+    <td><img src="https://user-images.githubusercontent.com/107903370/229374459-4aae2af9-e713-4228-9bdf-dee5ecf9e863.png"  alt="" /></td>
   </tr>
   <br/>
    <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221470139-b65917b8-489f-457f-8e23-5b05ab3573ea.PNG"   alt="" /></td>
+    <td><img src="https://user-images.githubusercontent.com/107903370/229374657-f95af9dd-c173-4608-b3b3-9266d15aaabe.png"   alt="" /></td>
   </tr>
   <br/>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/109049556/221470189-0209c77d-7c33-4480-8aae-c895f8aec1c8.PNG"  alt="" /></td>
+    <td><https://user-images.githubusercontent.com/107903370/229374722-23825591-7c3b-4e79-9e77-916776ebe525.png"  alt="" /></td>
   </tr>
   <br/>
    <tr>
