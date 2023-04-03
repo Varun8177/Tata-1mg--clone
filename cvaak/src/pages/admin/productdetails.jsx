@@ -51,6 +51,7 @@ import {
 } from "@/redux/admin/admin.action";
 import AdminProductsPagination from "@/components/admin/AdminProductsPagination";
 import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
+import { AiFillForward } from "react-icons/ai";
 
 const AdminProducts = () => {
   const data = useSelector((store) => store.AdminReducer.products);
@@ -360,9 +361,7 @@ function EditButton({ item }) {
               variant="ghost"
               onClick={() => {
                 const changes = { title: title, price, src: selectedImage };
-                dispatch(UpdateProd(item._id, changes)).then(() => {
-                  onClose();
-                });
+                dispatch(UpdateProd(item._id, changes)).then(() => {});
               }}
             >
               Update Product

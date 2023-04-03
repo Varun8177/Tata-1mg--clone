@@ -118,7 +118,7 @@ const Admin = () => {
               />
               <Boxes
                 color={"#43aa8b"}
-                value={"10"}
+                value={"23"}
                 text={"Users online"}
                 src={
                   "https://user-images.githubusercontent.com/107903370/229278170-dc210e2b-2b17-452e-9788-c88fd2077187.jpg"

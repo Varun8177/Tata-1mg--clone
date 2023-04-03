@@ -45,6 +45,10 @@ const FilterAndSort = ({
   useEffect(() => {
     let params = {};
     if (filterValues.length) params.category = filterValues;
+    if (sort) {
+      params.sortBy = "price";
+      params.order = sort;
+    }
     router.push({
       query: params,
     });
@@ -57,6 +61,7 @@ const FilterAndSort = ({
       params.sortBy = "price";
       params.order = sort;
     }
+    if (filterValues.length) params.category = filterValues;
     router.push({
       query: params,
     });
@@ -72,6 +77,7 @@ const FilterAndSort = ({
     router.push({
       query: params,
     });
+    if (filterValues.length) params.category = filterValues;
     dispatch(getData(params.sortBy, Rating, filterValues));
   }, [Rating]);
   return (
@@ -98,8 +104,8 @@ const FilterAndSort = ({
                   Calcium
                 </Checkbox>
                 <Checkbox value="supplement">Suppliments</Checkbox>
-                <Checkbox value="aryurvedic">Proteins</Checkbox>
-                <Checkbox value="mask">masks</Checkbox>
+                <Checkbox value="aryurvedic">Ayurvedic</Checkbox>
+                <Checkbox value="mask">Masks</Checkbox>
               </Stack>
             </CheckboxGroup>
           </Box>
