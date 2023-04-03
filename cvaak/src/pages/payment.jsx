@@ -2,20 +2,15 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import {
   Box,
-  Text,
-  Textarea,
   RadioGroup,
-  Stack,
   Radio,
-  Flex,
   useToast,
   Button,
-  FormControl,
+  Stack,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { ADDADRESS } from "@/redux/adress/adress.types";
 import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
-import { FormGroup, Input, InputLabel } from "@mui/material";
 function ResizeExample() {
   const [resize, setResize] = React.useState("horizontal");
   return (
@@ -31,7 +26,6 @@ function ResizeExample() {
   );
 }
 const Payment = () => {
-  let [value, setValue] = React.useState("");
   let [add, setAdd] = React.useState("");
   let [land, setLand] = React.useState("");
   let [pin, setPin] = React.useState("");
@@ -91,7 +85,7 @@ const Payment = () => {
           style={{
             border: "0px solid red",
             marginLeft: "700px",
-            color: "333333",
+            color: "black",
             fontSize: "16px",
             width: "20%",
             fontFamily: "Clear SansHelvetica Neue",
@@ -101,7 +95,6 @@ const Payment = () => {
             Shipping Address
           </h1>
         </Box>
-        {/* <Box style={{border:"1px solid red",marginBottom:"90%"}}> */}
         <Box
           style={{
             display: "flex",
@@ -110,10 +103,12 @@ const Payment = () => {
             width: "80%",
             marginLeft: "180px",
             alignContent: "center",
-            backgroundColor: "#fef7ef",
+            backgroundColor: "white",
+            padding: "5px",
+            "box-shadow": "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
           }}
         >
-          <Box>
+          <Box p={"5"}>
             <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
               Address:
             </label>
@@ -196,7 +191,7 @@ const Payment = () => {
             />
             <ResizeExample />
           </Box>
-          <Box style={{ marginTop: "11px" }}>
+          <Box style={{ marginTop: "11px", padding: "5px" }}>
             <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
               City:
             </label>
@@ -283,6 +278,7 @@ const Payment = () => {
                 alignItems: "flex-end",
                 justifyItems: "end",
                 justifyContent: "end",
+                padding: "5px",
               }}
             >
               <button

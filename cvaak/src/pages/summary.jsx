@@ -54,7 +54,7 @@ const Summary = () => {
     setTotalSavings(totalSavings);
     setTotalDiscount(totalDiscount);
     setTotalBeforeDiscount(totalBeforeDiscount);
-  }, []);
+  }, [cartData]);
   return (
     <>
       <CartNavbar />
@@ -226,7 +226,7 @@ const Summary = () => {
               }}
             >
               <Text fontSize={"12px"}>Price Discount</Text>
-              <Text fontSize={"12px"}>-₹{totalDiscount}</Text>
+              <Text fontSize={"12px"}>-₹{totalDiscount.toFixed(2)}</Text>
             </div>
             <div
               style={{
@@ -264,7 +264,7 @@ const Summary = () => {
               }}
             >
               <Text fontSize={"12px"}>To be paid</Text>
-              <Text fontSize={"12px"}>₹{total}</Text>
+              <Text fontSize={"12px"}>₹{total.toFixed(2)}</Text>
             </div>
             <div
               style={{
@@ -279,7 +279,7 @@ const Summary = () => {
               }}
             >
               <Text fontSize={"12px"}>Total Savings</Text>
-              <Text fontSize={"12px"}>₹{totalSavings}</Text>
+              <Text fontSize={"12px"}>₹{totalSavings.toFixed(2)}</Text>
             </div>
             <Link href={"/cardpayment"}>
               <div

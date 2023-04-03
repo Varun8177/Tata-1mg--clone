@@ -1,7 +1,6 @@
 import * as types from "./actionTypes";
 import axios from "axios";
 
-
 const userLogin = (payload) => async (dispatch) => {
   try {
     const response = await axios.post(
@@ -12,7 +11,7 @@ const userLogin = (payload) => async (dispatch) => {
     localStorage.setItem("token", data.token);
     dispatch({ type: types.USER_LOGIN, payload: data });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
@@ -42,19 +41,19 @@ const userStatusUpdate = () => async (dispatch) => {
   const login = await fetch("https://black-skirt.cyclic.app/users/verify", {
     method: "GET",
     headers: {
-      auth: `Bearer ${localStorage.getItem("token")}`
-    }
+      auth: `Bearer ${localStorage.getItem("token")}`,
+    },
   });
-  const res = await login.json()
-  dispatch({ type: types.USER_STATUS_UPDATE, payload: res })
-  console.log("validation", res)
+  const res = await login.json();
+  dispatch({ type: types.USER_STATUS_UPDATE, payload: res });
+  console.log("validation", res);
 };
 
 const userLogout = () => (dispatch) => {
-  localStorage.clear()
+  localStorage.clear();
   dispatch({
     type: types.USER_LOGOUT,
-  })
+  });
 };
 
 export { userLogin, userRegister, userStatusUpdate, userLogout };

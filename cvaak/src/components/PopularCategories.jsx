@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Center, Flex, Grid, Text } from "@chakra-ui/react";
+import { Box, Center, Grid, Text } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 const PopularCategories = () => {
   const pc = [
@@ -45,7 +45,6 @@ const PopularCategories = () => {
       <Center
         bgColor={"white"}
         w="100%"
-        // border="1px solid black"
         boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
         mt="10"
         mb="10"

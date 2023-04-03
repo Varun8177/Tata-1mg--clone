@@ -247,7 +247,7 @@ export default function Profile() {
               justifyContent: "space-evenly",
               borderRadius: "5px",
               boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-              paddingRight:"20px"
+              paddingRight: "20px",
             }}
           >
             <div style={{ margin: "20px" }}>
@@ -262,8 +262,8 @@ export default function Profile() {
                   Subscribe to marketing emails
                 </h5>
               </div>
-              <div style={{ marginTop: "20px"}}>
-                <p style={{paddingBottom:"10px"}}>
+              <div style={{ marginTop: "20px" }}>
+                <p style={{ paddingBottom: "10px" }}>
                   We will send you the latest offers, best products and updated
                   medical information to your email address
                 </p>
@@ -286,7 +286,7 @@ export default function Profile() {
               justifyContent: "space-evenly",
               borderRadius: "5px",
               boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-              paddingRight:"20px"
+              paddingRight: "20px",
             }}
           >
             <div style={{ margin: "20px" }}>

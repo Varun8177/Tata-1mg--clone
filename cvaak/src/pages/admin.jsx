@@ -11,20 +11,14 @@ import {
   GetOrdersDataRequest,
   GetUserDataRequest,
 } from "@/redux/admin/admin.action";
-// import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
-// import { auth } from "config/firebase";
-// import { userStatusUpdate } from "@/redux/auth/action";
 import { getData } from "@/redux/products/products.action";
+import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 
 const Admin = () => {
-  //  const prod = useSelector((store) => store.AdminReducer.products);
   const data = useSelector((store) => store.AdminReducer.userData);
   const prod = useSelector((store) => store.ProductReducer.products);
   const Orderdata = useSelector((store) => store.AdminReducer.orders);
-  // const AdminName = useSelector((store) => store.AdminReducer.Admins);
   const dispatch = useDispatch();
-  // const { isAuth, userName } = useSelector((state) => state.authReducer);
-  // let total = Orderdata.reduce((acc, el) => acc + Number(el.orders), 0);
 
   const InitialData = () => {
     dispatch(GetRequest());
@@ -32,31 +26,28 @@ const Admin = () => {
   };
   useEffect(() => {
     InitialData();
-    // auth.onAuthStateChanged((user) => {
-    //   if (user) {
-    //     dispatch(userStatusUpdate(user.displayName));
-    //   }
-    // });
     dispatch(GetUserDataRequest());
     dispatch(GetOrdersDataRequest());
-    // dispatch(GetAdminDataRequest());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // let x = AdminName?.filter((item) => {
-  //   return item.name === userName;
-  // });
-
   const userData = {
-    labels: data.map((data) => data.day),
+    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     datasets: [
       {
         label: "Users Gained",
-        data: data.map((data) => data.userGain),
-        backgroundColor: ["#f24c00", "#e7e7e7", "#b9a44c"],
+        data: [10, 20, 15, 25, 30],
+        backgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "#4BC0C0",
+          "#9966FF",
+        ],
       },
     ],
   };
+
   const OrdersData = {
     labels: Orderdata.map((data) => data.day),
     datasets: [
@@ -71,14 +62,11 @@ const Admin = () => {
     console.log(prod);
   }
   return (
-    <>
-      {/* <CartNavbar /> */}
+    <Box bgColor={"#d8dff7"} h={"100vh"}>
+      <CartNavbar />
       <Box
-        bgColor={"#d8dff7"}
-        h={{
-          base: "130vh",
-          lg: "90vh",
-        }}
+        bgColor={{ base: "#d8dff7", lg: "white" }}
+        h={{ base: "130vh", lg: "90vh" }}
       >
         <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
           <Box
@@ -94,7 +82,6 @@ const Admin = () => {
             <Sidebar />
           </Box>
           <Box
-            // border={"1px solid red"}
             w={"100%"}
             h={{
               base: "120vh",
@@ -106,8 +93,6 @@ const Admin = () => {
             p={"6"}
           >
             <Text>Welcome Back, </Text>
-            {/* <Heading as={"b"}>{x[0]?.name}</Heading> */}
-
             <Grid
               w={"90%"}
               mt={"30px"}
@@ -133,68 +118,58 @@ const Admin = () => {
               />
               <Boxes
                 color={"#43aa8b"}
-                value={"1 0"}
+                value={"10"}
                 text={"Users online"}
                 src={
                   "https://user-images.githubusercontent.com/107903370/229278170-dc210e2b-2b17-452e-9788-c88fd2077187.jpg"
                 }
               />
               <Boxes
-                color={"#90be6d"}
-                // value={String(total).split("").join(" ")}
-                text={"orders"}
+                color={"#43aa8b"}
+                value={"10"}
+                text={"Orders"}
                 src={
                   "https://icon2.cleanpng.com/20180614/aue/kisspng-computer-icons-purchase-order-purchasing-order-form-5b22a7babdcb73.7441057115289978187774.jpg"
                 }
               />
             </Grid>
+
             <Grid
-              w={"90%"}
-              mt={"30px"}
+              w={{ base: "100%", md: "90%" }}
+              mt={{ base: "20px", md: "30px" }}
               color={"white"}
               templateColumns={{
-                base: "repeat(1,1fr)",
-                sm: "repeat(1,1fr)",
-                md: "repeat(2,1fr)",
-                lg: "repeat(2,1fr)",
-                xl: "repeat(2,1fr)",
-                "2xl": "repeat(2,1fr)",
+                base: "repeat(1, 1fr)",
+                md: "repeat(2, 1fr)",
+                xl: "repeat(2, 1fr)",
+                "2xl": "repeat(2, 1fr)",
               }}
-              gap={"6"}
+              gap={{ base: "4", md: "6" }}
             >
               <Box
                 boxShadow={"lg"}
                 bgColor={"white"}
                 h={{
-                  base: "80px",
-                  sm: "150px",
+                  base: "120px",
                   md: "220px",
-                  lg: "180px",
                   xl: "200px",
                   "2xl": "300px",
                 }}
                 borderRadius={"10px"}
+                mt={{ base: "4", md: "0" }}
               >
                 <Bar data={userData} />
               </Box>
               <Box
-                mt={{
-                  base: "10px",
-                  sm: "10px",
-                  md: "0px",
-                  lg: "0",
-                  xl: "0",
-                  "2xl": "0",
-                }}
                 bgColor={"white"}
                 h={{
                   base: "200px",
                   md: "220px",
-                  lg: "180px",
                   xl: "200px",
                   "2xl": "300px",
                 }}
                 borderRadius={"10px"}
+                mt={{ base: "4", md: "0" }}
               >
                 {" "}
                 <Pie data={OrdersData} />
@@ -203,7 +178,7 @@ const Admin = () => {
           </Box>
         </Flex>
       </Box>
-    </>
+    </Box>
   );
 };
 

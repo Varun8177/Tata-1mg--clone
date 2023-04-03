@@ -221,7 +221,7 @@ export default function Cardpayment() {
       setTotalSavings(totalSavings);
       setTotalDiscount(totalDiscount);
       setTotalBeforeDiscount(totalBeforeDiscount);
-    }, []);
+    }, [cartData]);
     return (
       <>
         <div
@@ -270,12 +270,12 @@ export default function Cardpayment() {
                   Card expilry dd/mm)
                 </p>
 
-                <span class="expiration" style={{ marginTop: "20px" }}>
+                <span className="expiration" style={{ marginTop: "20px" }}>
                   <input
                     type={"text"}
                     name="month"
                     placeholder="MM"
-                    maxlength="2"
+                    maxLength="2"
                     size="2"
                     style={{ borderBlockEnd: "1px solid grey" }}
                     onChange={(e) => {
@@ -292,7 +292,7 @@ export default function Cardpayment() {
                     type={"text"}
                     name="year"
                     placeholder="YY"
-                    maxlength="2"
+                    maxLength="2"
                     size="2"
                     onChange={(e) => {
                       setYear(e.target.value);
@@ -387,7 +387,7 @@ export default function Cardpayment() {
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
           width: "80%",
           margin: "auto",
           backgroundColor: "#FAFAFA",
@@ -408,10 +408,12 @@ export default function Cardpayment() {
           {cards ? Cardstructure() : cashdel()}
         </div>
 
-        <div style={{ width: "40%", height: "auto", border: "0px solid red" }}>
+        <div
+          style={{ width: "400px", height: "auto", border: "0px solid red" }}
+        >
           <div
             style={{
-              width: "40%",
+              width: "400",
               height: "auto",
             }}
           >
@@ -453,7 +455,7 @@ export default function Cardpayment() {
                 }}
               >
                 <Text fontSize={"12px"}>Item Total(MRP)</Text>
-                <Text fontSize={"12px"}>₹{totalBeforeDiscount}</Text>
+                <Text fontSize={"12px"}>₹{totalBeforeDiscount.toFixed(2)}</Text>
               </div>
               <div
                 style={{
@@ -463,7 +465,7 @@ export default function Cardpayment() {
                 }}
               >
                 <Text fontSize={"12px"}>Price Discount</Text>
-                <Text fontSize={"12px"}>-₹{totalDiscount}</Text>
+                <Text fontSize={"12px"}>-₹{totalDiscount.toFixed(2)}</Text>
               </div>
               <div
                 style={{
@@ -501,7 +503,7 @@ export default function Cardpayment() {
                 }}
               >
                 <Text fontSize={"12px"}>To be paid</Text>
-                <Text fontSize={"12px"}>₹{total}</Text>
+                <Text fontSize={"12px"}>₹{total.toFixed(2)}</Text>
               </div>
               <div
                 style={{
@@ -516,7 +518,7 @@ export default function Cardpayment() {
                 }}
               >
                 <Text fontSize={"12px"}>Total Savings</Text>
-                <Text fontSize={"12px"}>₹{totalSavings}</Text>
+                <Text fontSize={"12px"}>₹{totalSavings.toFixed(2)}</Text>
               </div>
               <div
                 style={{

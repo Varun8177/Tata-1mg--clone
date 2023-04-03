@@ -1,6 +1,4 @@
-import { sortData } from "@/pages/api/hello";
-import { FilterDataReq, getData } from "@/redux/products/products.action";
-import { REQUEST_FILTER } from "@/redux/products/products.actionTypes";
+import { getData } from "@/redux/products/products.action";
 import {
   Box,
   Button,

@@ -1,8 +1,17 @@
-import { Avatar, Box, Flex, Hide, Text } from "@chakra-ui/react";
+import { Avatar, Box, Flex, Grid, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { FaLongArrowAltRight } from "react-icons/fa"
+import { FaLongArrowAltRight } from "react-icons/fa";
 
-function Boxes({ color, value, text, location,src }) {
+export default function Boxes({
+  color,
+  value,
+  text,
+  subtitle,
+  icon,
+  ctaText,
+  ctaLink,
+  src,
+}) {
   const router = useRouter();
   return (
     <Box
@@ -24,42 +33,39 @@ function Boxes({ color, value, text, location,src }) {
       }}
       bgColor={color}
       borderRadius={"10px"}
-      pt={"15px"}
+      p={4}
     >
-      <Flex alignItems={"center"} w={"100%"} justifyContent={"space-around"}>
+      <Flex alignItems={"center"} justifyContent={"space-between"}>
         <Box>
-        {/* <Avatar bgColor={"white"} color={"black"} name={String(value)} /> */}
-        <img  style={{width:"60px",borderRadius:"50%"}} src={src} alt="logo" />
+          {icon && (
+            <Avatar bgColor={"white"} color={"black"} name={String(value)} />
+          )}
+          {src && (
+            <img
+              style={{ width: "60px", borderRadius: "50%" }}
+              src={src}
+              alt={text}
+            />
+          )}
         </Box>
-        <Box>
-        <Text color={"black"}>{text}</Text>
-       
-        <Text style={{fontSize:"25px",fontWeight:"bold"}} >{value}</Text>
+        <Box textAlign="right">
+          <Text fontWeight="bold" fontSize={{ base: "2xl", md: "3xl" }}>
+            {value}
+          </Text>
+          <Text>{text}</Text>
+          {subtitle && <Text mt={2}>{subtitle}</Text>}
+          {ctaText && ctaLink && (
+            <Text
+              as="a"
+              href={ctaLink}
+              textDecoration="underline"
+              fontSize="sm"
+            >
+              {ctaText} <FaLongArrowAltRight ml={1} />
+            </Text>
+          )}
         </Box>
-
-      </Flex>
-      <Flex
-        alignItems={"center"}
-        mt={{
-          base: "5px",
-          sm: "5px",
-          md: "5px",
-          lg: "10px",
-          xl: "20px",
-          "2xl": "20px",
-        }}
-        w={"fit-content"}
-        ml={"20px"}
-        cursor={"pointer"}
-        onClick={() => {
-          router.push(location);
-        }}
-      > 
-      
-        {/* <Text w={"fit-content"}>View Details</Text> */}
-        {/* <FaLongArrowAltRight style={{ marginLeft: "20px" }} /> */}
       </Flex>
     </Box>
   );
 }
-export default Boxes;

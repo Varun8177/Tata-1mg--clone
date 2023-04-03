@@ -1,4 +1,3 @@
-// import { AddCartItem } from "@/redux/admin/admin.types";
 import {
   Box,
   Button,
@@ -9,15 +8,14 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useToast } from "@chakra-ui/react";
-import { getCartData, postCartData } from "@/redux/cart/cart.action";
+import { postCartData } from "@/redux/cart/cart.action";
 
 const ProductCard = (props) => {
   const { isAuth } = useSelector((state) => state.authReducer);
-  const cartData = useSelector((state) => state.CartReducer.products);
   const [addText, setAddText] = useState("ADD");
   const router = useRouter();
   const toast = useToast();
@@ -25,20 +23,6 @@ const ProductCard = (props) => {
   const goToSingleProductPage = () => {
     router.push(`/products/${props._id}`);
   };
-
-  useEffect(() => {
-    dispatch(getCartData());
-  }, []);
-
-  useEffect(() => {
-    if (cartData) {
-      cartData.forEach((item) => {
-        if (item.title === props.title) {
-          setAddText("ADDED ✓");
-        }
-      });
-    }
-  }, []);
 
   return (
     <GridItem

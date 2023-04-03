@@ -2,7 +2,6 @@ import axios from "axios";
 import * as types from "./admin.types";
 
 export const GetRequest = () => async (dispatch) => {
-
   dispatch({ type: types.LOADING });
   try {
     const res = await axios.get(`https://black-skirt.cyclic.app/products/`);
@@ -23,7 +22,6 @@ export const GetUserDataRequest = () => async (dispatch) => {
   }
 };
 
-
 export const PostUserDataRequest = (details) => async (dispatch) => {
   const res = await axios.post(
     `https://black-skirt.cyclic.app/users/`,
@@ -35,14 +33,16 @@ export const PostUserDataRequest = (details) => async (dispatch) => {
 };
 
 export const GetOrdersDataRequest = () => async (dispatch) => {
-  dispatch({ type: types.LOADING })
+  dispatch({ type: types.LOADING });
   try {
-    const res = await axios.get(`https://63f5d74059c944921f678f16.mockapi.io/orders`)
-    dispatch({ type: types.GETORDERSDATA, payload: res.data })
+    const res = await axios.get(
+      `https://63f5d74059c944921f678f16.mockapi.io/orders`
+    );
+    dispatch({ type: types.GETORDERSDATA, payload: res.data });
   } catch (error) {
-    dispatch({ type: types.ERROR })
+    dispatch({ type: types.ERROR });
   }
-}
+};
 
 // export const PostOrdersDataRequest = (details) => async (dispatch) => {
 //     const res = await axios.post(`https://black-skirt.cyclic.app/orders`, details)
@@ -95,11 +95,6 @@ export const DeleteProd = (id) => async (dispatch) => {
 };
 
 export const UpdateProd = (id, changes) => async (dispatch) => {
-  //   const res = await axios.patch(
-  //     `https://black-skirt.cyclic.app/products/update/${id}`,
-  //     changes
-  //   );
-
   const res = await fetch(
     `https://black-skirt.cyclic.app/products/update/${id}`,
     {
@@ -112,9 +107,11 @@ export const UpdateProd = (id, changes) => async (dispatch) => {
     }
   );
   const data = await res.json();
+  console.log("update", data)
   if (data) {
-    dispatch({ type: types.UPDATEPRODUCT, payload: data });
+    dispatch({ type: types.UPDATEPRODUCT, payload: data.product });
   }
+
 };
 
 export const AddProd = (details) => async (dispatch) => {

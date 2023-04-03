@@ -44,7 +44,6 @@ const Products = () => {
     setOrder("");
     dispatch(getData("", ""));
   };
-  //   console.log(sort, order);
 
   const handleFilter = (value) => {};
 
@@ -52,9 +51,6 @@ const Products = () => {
     dispatch(getData(sort, order));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // useEffect(() => {
-  //   dispatch(getCartData());
-  // }, [cartData]);
 
   return (
     <>
@@ -116,11 +112,3 @@ const Products = () => {
 };
 
 export default Products;
-
-// export async function getServerSideProps() {
-//     const data = await axios
-//         .get(`https://dead-earrings-tick.cyclic.app/products`)
-//         .then((res) => { return res.data })
-//         .catch((error) => console.log(error));
-//     return { props: { data } };
-// }

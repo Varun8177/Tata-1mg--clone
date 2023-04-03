@@ -8,7 +8,7 @@ import {
   Flex,
   Button,
   Spacer,
-  Image
+  Image,
 } from "@chakra-ui/react";
 import FullBodyHealthCheckups from "@/components/FullBodyHealthCheckups";
 import ShopByHealthConcerns from "@/components/ShopByHealthConcerns";
@@ -35,11 +35,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainNavbar />
-      <Box bgColor={'#f6f6f6'}>
-        <Flex bgColor={'white'} w={"100%"} >
+      <Box bgColor={"#f6f6f6"}>
+        <Flex bgColor={"white"} w={"100%"}>
           <HomeSlider />
           <Image
-            display={{ base: 'none', lg: 'none', xl: 'block' }}
+            display={{ base: "none", lg: "none", xl: "block" }}
             src={
               "https://onemg.gumlet.io/a_ignore,w_480,h_200,c_fit,q_auto,f_auto/1caa64c3-60f0-4c9d-ab85-4fc9a49769c3.png"
             }
@@ -49,21 +49,20 @@ export default function Home() {
           />
         </Flex>
 
-        <Box align="center" p="20px" gap="100px" bgColor={'white'}>
+        <Box align="center" p="20px" gap="100px" bgColor={"white"}>
           <Text fontSize="2xl" color="grey">
             Tata 1mg: India’s Leading Online Pharmacy & Healthcare Platform
           </Text>
         </Box>
-        <Center mb={'50px'}>
+        <Center mb={"50px"}>
           <Image
             src={
               "https://onemg.gumlet.io/marketing/29087450-0f25-4856-96fc-62f4ea81bbd3.png"
             }
-
             height={{
               base: "100px",
               md: "130px",
-              lg: '150px'
+              lg: "150px",
             }}
             width={"100%"}
             alt="caruausal"
@@ -79,7 +78,7 @@ export default function Home() {
             _hover={{
               bg: "#fd7c70",
             }}
-            onClick={() => router.push('/products')}
+            onClick={() => router.push("/products")}
           >
             SEE ALL
           </Button>
@@ -96,7 +95,7 @@ export default function Home() {
             _hover={{
               bg: "#fd7c70",
             }}
-            onClick={() => router.push('/products')}
+            onClick={() => router.push("/products")}
           >
             SEE ALL
           </Button>
@@ -112,7 +111,7 @@ export default function Home() {
             _hover={{
               bg: "#fd7c70",
             }}
-            onClick={() => router.push('/products')}
+            onClick={() => router.push("/products")}
           >
             SEE ALL
           </Button>
@@ -130,7 +129,7 @@ export default function Home() {
             _hover={{
               bg: "#fd7c70",
             }}
-            onClick={() => router.push('/products')}
+            onClick={() => router.push("/products")}
           >
             SEE ALL
           </Button>
@@ -147,7 +146,7 @@ export default function Home() {
             _hover={{
               bg: "#fd7c70",
             }}
-            onClick={() => router.push('/products')}
+            onClick={() => router.push("/products")}
           >
             SEE ALL
           </Button>
@@ -164,7 +163,7 @@ export default function Home() {
             _hover={{
               bg: "#fd7c70",
             }}
-            onClick={() => router.push('/products')}
+            onClick={() => router.push("/products")}
           >
             SEE ALL
           </Button>
@@ -181,7 +180,7 @@ export default function Home() {
             _hover={{
               bg: "#fd7c70",
             }}
-            onClick={() => router.push('/products')}
+            onClick={() => router.push("/products")}
           >
             SEE ALL
           </Button>

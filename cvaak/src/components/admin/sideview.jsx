@@ -1,23 +1,36 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
-import {
-  Button,
-  Flex,
-  Grid,
-  Heading,
-  Hide,
-  Show,
-  Stack,
-  Text,
-  Tooltip,
-} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { Stack, Heading, Box, Text, Grid, Divider } from "@chakra-ui/react";
 import { AiFillHome } from "react-icons/ai";
 import { BsClipboardData } from "react-icons/bs";
 import { FiActivity, FiSettings } from "react-icons/fi";
 import { SiSketchfab } from "react-icons/si";
+import Link from "next/link";
 
-const Sidebar = () => {
+const MenuItem = ({ icon, text, to, isCollapsed }) => {
+  return (
+    <Link href={to}>
+      <Grid
+        templateColumns={isCollapsed ? "50px" : "50px auto"}
+        alignItems="center"
+        cursor="pointer"
+        p={2}
+        borderRadius="md"
+        _hover={{ bgColor: "gray.200" }}
+      >
+        {isCollapsed ? (
+          icon
+        ) : (
+          <>
+            {icon} <Text ml={3}>{text}</Text>
+          </>
+        )}
+      </Grid>
+    </Link>
+  );
+};
+
+const Sidebar = ({ isCollapsed }) => {
   const [domLoaded, setDomLoaded] = useState(false);
   const [view, setview] = useState(true);
   const router = useRouter();
@@ -28,180 +41,61 @@ const Sidebar = () => {
   return (
     <>
       {domLoaded && (
-        <>
-          <Hide below="md">
-            <Flex bgcolor={"white"} w={view ? "220px" : "80px"}>
-              {view ? (
-                <Stack w={"150px"} m={"auto"} h={"80vh"} textAlign={"center"}>
-                  <Heading
-                    ml={"15px"}
-                    mb={"20px"}
-                    pt={"5"}
-                    w={"fit-content"}
-                    borderBottomWidth={3}
-                    textAlign={"center"}
-                  >
-                    Menu
-                  </Heading>
-                  <Grid
-                    w={"70%"}
-                    templateColumns={"50px auto"}
-                    alignItems={"center"}
-                    cursor={"pointer"}
-                    onClick={() => {
-                      router.push("/admin");
-                    }}
-                  >
-                    <AiFillHome /> <Text>Dashboard</Text>
-                  </Grid>
-                  <br />
-                  <hr />
-                  <Grid
-                    cursor={"pointer"}
-                    w={"70%"}
-                    templateColumns={"50px auto"}
-                    alignItems={"center"}
-                    onClick={() => {
-                      router.push("/admin/productdetails");
-                    }}
-                  >
-                    <BsClipboardData /> Products
-                  </Grid>
-                  <br />
-                  <hr />
-                  <Grid
-                    w={"70%"}
-                    templateColumns={"50px auto"}
-                    alignItems={"center"}
-                    cursor={"pointer"}
-                    onClick={() => {
-                      router.push("/admin/activity");
-                    }}
-                  >
-                    <FiActivity /> Activity
-                  </Grid>
-                  <br />
-                  <hr />
-                  <Grid
-                    w={"70%"}
-                    templateColumns={"50px auto"}
-                    alignItems={"center"}
-                    cursor={"pointer"}
-                    onClick={() => {
-                      router.push("/admin/admins");
-                    }}
-                  >
-                    <SiSketchfab /> Admins
-                  </Grid>
-                  <br />
-                  <hr />
-                  <Grid
-                    w={"70%"}
-                    templateColumns={"50px auto"}
-                    alignItems={"center"}
-                    cursor={"pointer"}
-                    onClick={() => {
-                      router.push("/admin/settings");
-                    }}
-                  >
-                    <FiSettings /> Settings
-                  </Grid>
-                </Stack>
-              ) : (
-                <Stack w={"70px"} m={"auto"} h={"80vh"}>
-                  <Heading
-                    fontSize={"18px"}
-                    ml={"15px"}
-                    mb={"20px"}
-                    pt={"5"}
-                    w={"fit-content"}
-                    borderBottomWidth={3}
-                    textAlign={"center"}
-                  >
-                    Menu
-                  </Heading>
-                  <Tooltip
-                    cursor={"pointer"}
-                    label="Dashboard"
-                    placement="right"
-                  >
-                    <Grid
-                      cursor={"pointer"}
-                      w={"100%"}
-                      templateColumns={"50px"}
-                      alignItems={"center"}
-                    >
-                      <AiFillHome style={{ margin: "auto" }} size={"20"} />
-                    </Grid>
-                  </Tooltip>
-                  <br />
-                  <hr />
-                  <Tooltip label="Product Details" placement="right">
-                    <Grid
-                      cursor={"pointer"}
-                      w={"100%"}
-                      templateColumns={"50px"}
-                      alignItems={"center"}
-                    >
-                      <BsClipboardData style={{ margin: "auto" }} size={"20"} />
-                    </Grid>
-                  </Tooltip>
-                  <br />
-                  <hr />
-                  <Tooltip label="Activity" placement="right">
-                    <Grid
-                      w={"100%"}
-                      templateColumns={"50px"}
-                      alignItems={"center"}
-                      cursor={"pointer"}
-                    >
-                      <FiActivity style={{ margin: "auto" }} size={"20"} />
-                    </Grid>
-                  </Tooltip>
-                  <br />
-                  <hr />
-                  <Tooltip label="Admins" placement="right">
-                    <Grid
-                      cursor={"pointer"}
-                      w={"100%"}
-                      templateColumns={"50px"}
-                      alignItems={"center"}
-                    >
-                      <SiSketchfab style={{ margin: "auto" }} size={"20"} />
-                    </Grid>
-                  </Tooltip>
-
-                  <br />
-                  <hr />
-
-                  <Tooltip label="settings" placement="right">
-                    <Grid
-                      cursor={"pointer"}
-                      w={"100%"}
-                      templateColumns={"50px"}
-                      alignItems={"center"}
-                    >
-                      <FiSettings style={{ margin: "auto" }} size={"20"} />
-                    </Grid>
-                  </Tooltip>
-                </Stack>
-              )}
-              <Button
-                h={"80vh"}
-                bgColor={"white"}
-                w={"30px"}
-                alignSelf={"flex-end"}
-                onClick={() => {
-                  setview(!view);
-                }}
-                _hover={{ bgcolor: "white" }}
-              >
-                {view ? <ArrowLeftIcon /> : <ArrowRightIcon />}
-              </Button>
-            </Flex>
-          </Hide>
-          <Show below="md">{/* <Menu></Menu> */}</Show>
-        </>
+        <Box
+          w={isCollapsed ? "50px" : "200px"}
+          h="100vh"
+          bg="white"
+          boxShadow="md"
+          py={5}
+          px={3}
+          position="relative"
+        >
+          <Stack spacing={3}>
+            <Heading
+              size="md"
+              textAlign="center"
+              display={isCollapsed ? "none" : "block"}
+            >
+              Dashboard
+            </Heading>
+            <Divider />
+            <MenuItem
+              icon={<AiFillHome />}
+              text="Dashboard"
+              to="/admin"
+              isCollapsed={isCollapsed}
+            />
+            <Divider />
+            <MenuItem
+              icon={<BsClipboardData />}
+              text="Products"
+              to="/admin/productdetails"
+              isCollapsed={isCollapsed}
+            />
+            <Divider />
+            <MenuItem
+              icon={<FiActivity />}
+              text="Activity"
+              to="/admin/activity"
+              isCollapsed={isCollapsed}
+            />
+            <Divider />
+            <MenuItem
+              icon={<SiSketchfab />}
+              text="Admins"
+              to="/admin/admins"
+              isCollapsed={isCollapsed}
+            />
+            <Divider />
+            <MenuItem
+              icon={<FiSettings />}
+              text="Settings"
+              to="/admin/settings"
+              isCollapsed={isCollapsed}
+            />
+            <Divider />
+          </Stack>
+        </Box>
       )}
     </>
   );

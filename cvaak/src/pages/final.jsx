@@ -1,6 +1,14 @@
 import { useEffect } from "react";
-import Link from "next/link";
-import { Box, Center, Button, Image } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Button,
+  Stack,
+  Center,
+  Image,
+} from "@chakra-ui/react";
+import { FaCheckCircle } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { resetCart } from "@/redux/cart/cart.action";
@@ -17,29 +25,33 @@ const Final = () => {
   }, []);
 
   return (
-    <>
-      <Center h={"80vh"}>
-        <Box>
-          <Image
-            src="https://tse1.mm.bing.net/th?id=OIP.MT07Og6cRde17N6Ga5IWfwHaFE&pid=Api&P=0"
-            alt=""
-          />
-        </Box>
-      </Center>
-      <Center>
-        <Link href="/">
-          {" "}
+    <Center h="100vh">
+      <Box maxW="600px" mx="auto" textAlign="center" py={20}>
+        <Center mb={4}>
+          <FaCheckCircle size="5em" color="green.500" />
+        </Center>
+        <Heading as="h1" size="xl" mb={4}>
+          Thank you for your order!
+        </Heading>
+        <Text mb={8}>
+          Your order has been successfully placed and will be shipped to you
+          soon.
+        </Text>
+        <Stack direction={["column", "row"]} spacing={4} justify="center">
+          <Button colorScheme="green" size="lg" onClick={() => {}}>
+            View Order Details
+          </Button>
           <Button
-            style={{ backgroundColor: "red", color: "white" }}
+            size="lg"
             onClick={() => {
-              dispatch(resetCart({ type: RESETCART }));
+              router.push("/");
             }}
           >
-            Home
+            Return to Home
           </Button>
-        </Link>
-      </Center>
-    </>
+        </Stack>
+      </Box>
+    </Center>
   );
 };
 

@@ -4,4 +4,4 @@ export const GET_ITEMS_SUCCESS = "GET_ITEMS_SUCCESS";
 export const UPDATE_ITEM_SUCCESS = "UPDATE_ITEM_SUCCESS";
 export const DELETE_ITEM_SUCCESS = "DELETE_ITEM_SUCCESS";
 export const ADD_ITEM_SUCCESS = "ADD_ITEM_SUCCESS";
-export const RESETCART = "reset/cart"
+export const RESETCART = "reset/cart";

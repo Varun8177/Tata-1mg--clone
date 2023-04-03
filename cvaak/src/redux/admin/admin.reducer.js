@@ -31,12 +31,14 @@ const AdminReducer = (state = initialState, { type, payload }) => {
     }
 
     case types.UPDATEPRODUCT: {
-      console.log(payload);
+      console.log("update payload", payload?._id);
+      let x = state.products.map((ele) => {
+        return ele._id === payload?._id ? payload : ele
+      }
+      )
       return {
         ...state,
-        products: state.products.map((ele) =>
-          ele._id === payload._id ? payload : ele
-        ),
+        products: x,
       };
     }
 

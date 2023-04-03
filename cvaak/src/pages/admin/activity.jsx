@@ -1,9 +1,10 @@
-import Boxes from "@/components/admin/Boxes"
+import Boxes from "@/components/admin/Boxes";
 import Sidebar from "@/components/admin/Sideview";
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
+import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
 
 const Activity = () => {
   const data = [
@@ -28,7 +29,8 @@ const Activity = () => {
     ],
   };
   return (
-    <Box bgColor={"#d8dff7"} h={"90vh"}>
+    <Box bgColor={"#d8dff7"} h={"100vh"}>
+      <CartNavbar />
       <Flex bgColor={"#d8dff7"} w={"99%"} m={"auto"}>
         <Box
           bgColor={"white"}
@@ -40,14 +42,30 @@ const Activity = () => {
           <Sidebar />
         </Box>
         <Box
-          // border={"1px solid red"}
           w={"100%"}
           h={"80vh"}
           m={"auto"}
           mt="30px"
           bgColor={"white"}
+          boxShadow={"0px 0px 10px rgba(0, 0, 0, 0.1)"}
+          p={3}
         >
-          <Line data={userData} />
+          <Line
+            data={userData}
+            options={{
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+              },
+            }}
+          />
         </Box>
       </Flex>
     </Box>

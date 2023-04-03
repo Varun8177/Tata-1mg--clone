@@ -17,10 +17,10 @@ const CartPrice = ({ ele, handleDelete, handleTotal }) => {
     <>
       <Box
         style={{
-          border: "1px solid grey",
+          borderWidth: "1",
           marginTop: "20px",
           backgroundColor: "#FAF9F6",
-          boxShadow: "rgba(0, 0, 0, 0.18) 0px 2px 4px;",
+          "box-shadow": "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
           width: "40vw",
           height: "20vh",
           display: "flex",
