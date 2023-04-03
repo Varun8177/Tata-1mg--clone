@@ -8,7 +8,7 @@
 <!-- <h4 align="center">Frontend:</h4> -->
 
 <p align="center">
-  <img src="https://img.shields.io/badge/NextJs-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="reactjs" />
+  <img src="https://img.shields.io/badge/NextJs-20232A?style=for-the-badge&logo=nextjs&logoColor=61DAFB" alt="reactjs" />
   <img src="https://img.shields.io/badge/Chakra%20UI-3bc7bd?style=for-the-badge&logo=chakraui&logoColor=white" alt="chakra-ui" />
   <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="javascript" />
   <img src="https://img.shields.io/badge/MongoDB-02303A?style=for-the-badge&logo=react-router&logoColor=white" alt="mongoDB" />
