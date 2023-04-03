@@ -20,8 +20,10 @@
 
 <h4 align="center">Deployed On:</h4>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Vercel-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="vercel" />
+<p>
+<a href="https://perpetual-paper-4225.vercel.app/" >
+<img src="https://img.shields.io/badge/Vercel-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="vercel" /></a>
+  
   <img src="https://img.shields.io/badge/cyclic-430098?style=for-the-badge&logo=vercel&logoColor=white" alt="cyclic" />
 </p>
 
