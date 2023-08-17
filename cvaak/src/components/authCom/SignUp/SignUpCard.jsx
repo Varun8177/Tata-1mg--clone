@@ -55,6 +55,7 @@ export default function SignUpCard() {
       duration: 3000,
       isClosable: true,
     });
+    setLoad(false);
   };
 
   const handleSignUp = (e) => {
