@@ -4,11 +4,15 @@ const initialState = {
   isAuth: false,
   userName: null,
   admin: false,
+  error: null
 };
 
 const reducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case types.ERROR: {
+      return { ...state, isAuth: false, error: payload }
+    }
     case types.USER_CHECK: {
       return { ...state, isAuth: payload };
     }

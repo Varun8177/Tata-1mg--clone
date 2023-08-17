@@ -47,6 +47,9 @@ const NavBottomSection = () => {
         >
           <Menu isOpen={HealthResource}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseLeave={() => {
                 setHealthResource(false);
               }}
@@ -115,6 +118,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={Vitamins}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseLeave={() => {
                 setVitamins(false);
               }}
@@ -238,6 +244,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={Diabetes}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseLeave={() => {
                 setDiabetes(false);
               }}
@@ -320,6 +329,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={HealthCare}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseOver={() => {
                 setHealthResource(false);
                 setAyurveda(false);
@@ -401,6 +413,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={PersonalCare}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseOver={() => {
                 setHealthResource(false);
                 setAyurveda(false);
@@ -516,6 +531,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={HealthConditions}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseOver={() => {
                 setHealthResource(false);
                 setAyurveda(false);
@@ -607,6 +625,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={Ayurveda}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseOver={() => {
                 setHealthResource(false);
                 setAyurveda(true);
@@ -708,6 +729,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={Homeopathy}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseOver={() => {
                 setHealthResource(false);
                 setAyurveda(false);
@@ -811,6 +835,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={Featured}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseOver={() => {
                 setHealthResource(false);
                 setAyurveda(false);
@@ -907,6 +934,9 @@ const NavBottomSection = () => {
           </Menu>
           <Menu isOpen={Covid}>
             <MenuButton
+              _focus={{
+                boxShadow: "none",
+              }}
               onMouseOver={() => {
                 setHealthResource(false);
                 setAyurveda(false);
@@ -997,6 +1027,9 @@ function TabMob() {
             <Grid templateColumns={"repeat(3,1fr)"}>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   as={Button}
                   fontSize={{
@@ -1013,6 +1046,9 @@ function TabMob() {
               </Menu>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   fontSize={{
                     base: "8px",
@@ -1029,6 +1065,9 @@ function TabMob() {
               </Menu>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   fontSize={{
                     base: "8px",
@@ -1045,6 +1084,9 @@ function TabMob() {
               </Menu>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   fontSize={{
                     base: "8px",
@@ -1061,6 +1103,9 @@ function TabMob() {
               </Menu>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   fontSize={{
                     base: "8px",
@@ -1077,6 +1122,9 @@ function TabMob() {
               </Menu>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   fontSize={{
                     base: "8px",
@@ -1093,6 +1141,9 @@ function TabMob() {
               </Menu>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   fontSize={{
                     base: "8px",
@@ -1109,6 +1160,9 @@ function TabMob() {
               </Menu>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   fontSize={{
                     base: "8px",
@@ -1125,6 +1179,9 @@ function TabMob() {
               </Menu>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   fontSize={{
                     base: "8px",
@@ -1141,6 +1198,9 @@ function TabMob() {
               </Menu>
               <Menu>
                 <MenuButton
+                  _focus={{
+                    boxShadow: "none",
+                  }}
                   variant={"unstyled"}
                   fontSize={{
                     base: "8px",

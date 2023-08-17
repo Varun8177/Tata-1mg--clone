@@ -34,6 +34,7 @@ const userRegister = (payload) => async (dispatch) => {
     }
   } catch (err) {
     console.log(err);
+    dispatch({ type: types.ERROR, payload: err.response.data.message });
   }
 };
 
@@ -46,7 +47,6 @@ const userStatusUpdate = () => async (dispatch) => {
   });
   const res = await login.json();
   dispatch({ type: types.USER_STATUS_UPDATE, payload: res });
-  console.log("validation", res);
 };
 
 const userLogout = () => (dispatch) => {

@@ -16,7 +16,7 @@ import {
   Center,
   useToast,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import SignUpCarousel from "./SignUpCarousel";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,23 +27,36 @@ import { useRouter } from "next/router";
 import SignInModal from "../SignIn/SignInModal";
 
 export default function SignUpCard() {
-  // const { isAuth, userName } = useSelector((state) => state.authReducer);
+  const { error } = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
-  // console.log(isAuth, userName);
   const router = useRouter();
   const [name, setName] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPass, setRegisterPass] = useState("");
-
   const [showPassword, setShowPassword] = useState(false);
   const [load, setLoad] = useState(false);
   const toast = useToast();
+
   const handleSignUp = () => {
     setLoad(true);
     dispatch(
       userRegister({ name, email: registerEmail, password: registerPass })
     );
   };
+
+  useEffect(() => {
+    if (error) {
+      toast({
+        title: "Bad request",
+        description: error,
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      setLoad(false);
+    }
+  }, [error, toast]);
+
   return (
     <Flex
       minH={"60vh"}
@@ -51,7 +64,6 @@ export default function SignUpCard() {
       align={"center"}
       justify={"center"}
       flexDirection={{ base: "column", md: "row", lg: "row" }}
-      // border="2px solid tomato"
       margin="auto"
       mt="10vh"
       borderRadius="15px"
