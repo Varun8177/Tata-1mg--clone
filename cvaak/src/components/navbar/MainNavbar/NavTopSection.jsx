@@ -15,10 +15,9 @@ import {
   Show,
   Text,
 } from "@chakra-ui/react";
-//import Link from 'next/link'
 import Image from "next/image";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { useRouter } from "next/router";
 
@@ -45,8 +44,11 @@ const NavTopSection = () => {
   };
 
   useEffect(() => {
-    dispatch(userStatusUpdate());
-    // dispatch(getCartData());
+    const token = localStorage.getItem("token") || "";
+    if (token) {
+      dispatch(userStatusUpdate());
+      dispatch(getCartData());
+    }
   }, []);
 
   return (
@@ -60,6 +62,7 @@ const NavTopSection = () => {
         "2xl": "20px",
       }}
       justifyContent={"space-between"}
+      alignItems={"center"}
     >
       <Flex
         w={{
@@ -197,11 +200,10 @@ const NavTopSection = () => {
       </Flex>
 
       <Flex
-        // border={"1px solid red"}
         mr={"20px"}
         w={"25%"}
         justifyContent={"space-evenly"}
-        alignItems={"center"}
+        alignItems={"center"} // Add this line to vertically center the content
         display={{
           base: "none",
           sm: "none",
@@ -259,7 +261,7 @@ const NavTopSection = () => {
                 <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
               </MenuList>
             </Menu>
-            <Text>Offers</Text>
+            <>Offers</>
             <Flex>
               <Menu>
                 <MenuButton
@@ -333,7 +335,7 @@ const NavTopSection = () => {
           </>
         )}
 
-        <Text>Need help?</Text>
+        <>Need help?</>
       </Flex>
     </Flex>
   );

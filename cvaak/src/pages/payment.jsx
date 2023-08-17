@@ -7,6 +7,8 @@ import {
   useToast,
   Button,
   Stack,
+  VStack,
+  Input,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { ADDADRESS } from "@/redux/adress/adress.types";
@@ -37,7 +39,8 @@ const Payment = () => {
   const toast = useToast();
   const router = useRouter();
   const dispatch = useDispatch();
-  const eventHandler = () => {
+  const eventHandler = (e) => {
+    e.preventDefault();
     if (
       add == "" ||
       pin == "" ||
@@ -84,7 +87,7 @@ const Payment = () => {
         <Box
           style={{
             border: "0px solid red",
-            marginLeft: "700px",
+            margin: "auto",
             color: "black",
             fontSize: "16px",
             width: "20%",
@@ -95,235 +98,141 @@ const Payment = () => {
             Shipping Address
           </h1>
         </Box>
-        <Box
+        <form
           style={{
-            display: "flex",
-            justifyContent: "space-around",
-            borderStyle: "ridge",
             width: "80%",
-            marginLeft: "180px",
-            alignContent: "center",
-            backgroundColor: "white",
-            padding: "5px",
+            margin: "auto",
+            background: "white",
             "box-shadow": "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
           }}
+          onSubmit={eventHandler}
         >
-          <Box p={"5"}>
-            <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
-              Address:
-            </label>
-            <input
-              onChange={(e) => setAdd(e.target.value)}
-              type={"text"}
-              value={add}
-              style={{
-                textAlign: "start",
+          <Box
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              borderStyle: "ridge",
+              width: "100%",
+              alignContent: "center",
+              backgroundColor: "white",
+              padding: "5px",
+            }}
+          >
+            <Box p={5} w={"50%"}>
+              <VStack spacing={4} align="start">
+                <label style={{ fontWeight: "600" }}>Address:</label>
+                <Input
+                  onChange={(e) => setAdd(e.target.value)}
+                  type="text"
+                  value={add}
+                  isRequired
+                  placeholder="Flatnumber, BuildingName, Streetname, City"
+                />
 
-                padding: "5px",
-                fontFamily:
-                  "Clear Sans Helvetica Neue Helvetica Arial sans-serif",
-                border: "1px solid gray",
-                width: "95%",
-                margin: "15px",
-                height: "80px",
-                borderRadius: "5px",
-              }}
-              placeholder="Flatnumber,BuildingName,Streetname,City"
-            />
-            <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
-              Landmark:
-            </label>
-            <input
-              onChange={(e) => setLand(e.target.value)}
-              value={land}
-              style={{
-                textAlign: "start",
-                padding: "5px",
-                fontFamily:
-                  "Clear Sans Helvetica Neue Helvetica Arial sans-serif",
-                border: "1px solid gray",
-                width: "95%",
-                margin: "15px",
-                height: "40px",
-                borderRadius: "5px",
-              }}
-              placeholder="Landmark (optional)"
-            />
-            <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
-              Pincode:
-            </label>
-            <input
-              onChange={(e) => setPin(e.target.value)}
-              value={pin}
-              type={"number"}
-              style={{
-                textAlign: "start",
-                padding: "5px",
-                fontFamily:
-                  "Clear Sans Helvetica Neue Helvetica Arial sans-serif",
-                border: "1px solid gray",
-                width: "95%",
-                margin: "15px",
-                height: "40px",
-                borderRadius: "5px",
-              }}
-              placeholder="Pincode"
-            />
-            <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
-              Locality:
-            </label>
-            <input
-              onChange={(e) => setLocal(e.target.value)}
-              value={local}
-              type={"text"}
-              style={{
-                textAlign: "start",
-                padding: "5px",
-                fontFamily:
-                  "Clear Sans Helvetica Neue Helvetica Arial sans-serif",
-                border: "1px solid gray",
-                width: "95%",
-                margin: "15px",
-                height: "40px",
-                borderRadius: "5px",
-              }}
-              placeholder="Locality"
-            />
-            <ResizeExample />
+                <label style={{ fontWeight: "600" }}>Landmark:</label>
+                <Input
+                  onChange={(e) => setLand(e.target.value)}
+                  value={land}
+                  placeholder="Landmark (optional)"
+                  isRequired
+                />
+
+                <label style={{ fontWeight: "600" }}>Pincode:</label>
+                <Input
+                  onChange={(e) => setPin(e.target.value)}
+                  value={pin}
+                  type="number"
+                  placeholder="Pincode"
+                  isRequired
+                />
+
+                <label style={{ fontWeight: "600" }}>Locality:</label>
+                <Input
+                  onChange={(e) => setLocal(e.target.value)}
+                  value={local}
+                  type="text"
+                  placeholder="Locality"
+                  isRequired
+                />
+
+                <ResizeExample />
+              </VStack>
+            </Box>
+            <Box p={5} w={"50%"}>
+              <VStack spacing={4} align="start">
+                <label style={{ fontWeight: "600" }}>City:</label>
+                <Input
+                  onChange={(e) => setCity(e.target.value)}
+                  value={city}
+                  type="text"
+                  placeholder="City"
+                  isRequired
+                />
+
+                <label style={{ fontWeight: "600" }}>State:</label>
+                <Input
+                  onChange={(e) => setState(e.target.value)}
+                  value={state}
+                  type="text"
+                  placeholder="State"
+                  isRequired
+                />
+
+                <label style={{ fontWeight: "600" }}>Name:</label>
+                <Input
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
+                  type=""
+                  placeholder="Customer Name"
+                  isRequired
+                />
+
+                <label style={{ fontWeight: "600" }}>Mobile Number:</label>
+                <Input
+                  onChange={(e) => setMobile(e.target.value)}
+                  value={mobile}
+                  type="tel"
+                  placeholder="10 Digits Mobile Number"
+                  isRequired
+                />
+              </VStack>
+            </Box>
           </Box>
-          <Box style={{ marginTop: "11px", padding: "5px" }}>
-            <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
-              City:
-            </label>
-            <input
-              onChange={(e) => setCity(e.target.value)}
-              value={city}
-              type={"text"}
-              style={{
-                textAlign: "start",
-                padding: "5px",
-                fontFamily:
-                  "Clear Sans Helvetica Neue Helvetica Arial sans-serif",
-                border: "1px solid gray",
-                width: "95%",
-                margin: "15px",
-                height: "40px",
-                borderRadius: "5px",
-              }}
-              placeholder="City"
-            />
-            <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
-              State:
-            </label>
-            <input
-              onChange={(e) => setState(e.target.value)}
-              value={state}
-              type={"text"}
-              style={{
-                textAlign: "start",
-                padding: "5px",
-                fontFamily:
-                  "Clear Sans Helvetica Neue Helvetica Arial sans-serif",
-                border: "1px solid gray",
-                width: "95%",
-                margin: "15px",
-                height: "40px",
-                borderRadius: "5px",
-              }}
-              placeholder="State"
-            />
-            <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
-              Name:
-            </label>
-            <input
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              type={""}
-              style={{
-                textAlign: "start",
-                padding: "5px",
-                fontFamily:
-                  "Clear Sans Helvetica Neue Helvetica Arial sans-serif",
-                border: "1px solid gray",
-                width: "95%",
-                margin: "15px",
-                height: "40px",
-                borderRadius: "5px",
-              }}
-              placeholder="Customer Name"
-            />
-            <label for="" style={{ marginLeft: "20px", fontWeight: "600" }}>
-              Mobile Number:
-            </label>
-            <input
-              onChange={(e) => setMobile(e.target.value)}
-              value={mobile}
-              type={"tel"}
-              style={{
-                textAlign: "start",
-                padding: "5px",
-                fontFamily:
-                  "Clear Sans Helvetica Neue Helvetica Arial sans-serif",
-                border: "1px solid gray",
-                width: "95%",
-                margin: "15px",
-                height: "40px",
-                borderRadius: "5px",
-              }}
-              placeholder="10 Digits Mobile Number"
-            />
-            <div
-              style={{
-                display: "flex",
-                alignItems: "flex-end",
-                justifyItems: "end",
-                justifyContent: "end",
-                padding: "5px",
-              }}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              justifyItems: "end",
+              justifyContent: "end",
+              padding: "5px",
+              gap: "10px",
+            }}
+          >
+            <Button
+              variant="outline"
+              colorScheme="gray"
+              fontFamily="Clear Sans Helvetica Neue Helvetica Arial sans-serif"
+              fontSize="15px"
+              width="100px"
+              height="40px"
             >
-              <button
-                style={{
-                  backgroundColor: "white",
-                  color: "black",
-                  fontFamily:
-                    "Clear Sans Helvetica Neue HelveticaArial sans-serif",
-                  fontSize: "15px",
-                  width: "100px",
-                  height: "40px",
-                }}
-              >
-                {" "}
-                CANCEL
-              </button>
-              <Button
-                onClick={eventHandler}
-                style={{
-                  backgroundColor: "#ff6f61",
-                  color: "white",
-                  fontFamily:
-                    "Clear Sans Helvetica Neue HelveticaArial sans-serif",
-                  fontSize: "15px",
-                  marginTop: "100px",
-                  width: "100px",
-                  height: "40px",
-                }}
-                isDisabled={
-                  add == "" ||
-                  pin == "" ||
-                  local == "" ||
-                  city == "" ||
-                  state == "" ||
-                  mobile == "" ||
-                  name == ""
-                }
-              >
-                SAVE
-              </Button>
-            </div>
-          </Box>
-        </Box>
-        {/* */}
+              CANCEL
+            </Button>
+            <Button
+              type="submit"
+              backgroundColor="#ff6f61"
+              color="white"
+              fontFamily="Clear Sans Helvetica Neue Helvetica Arial sans-serif"
+              fontSize="15px"
+              width="100px"
+              height="40px"
+            >
+              SAVE
+            </Button>
+          </div>
+        </form>
 
+        {/* */}
         {/* </Box> */}
       </Box>
     </>

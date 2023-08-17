@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Text,
-  Image,
-} from "@chakra-ui/react";
+import { Card, CardBody, Text, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import CartNavbar from "@/components/navbar/cartNavbar/CartNavbar";
@@ -125,7 +118,7 @@ const Summary = () => {
                 Arriving
               </Text>
             </CardBody>
-            {cartData.map((item) => {
+            {cartData?.map((item) => {
               return (
                 <CardBody key={item.id} bg={"white"} gap={"10px"}>
                   <div

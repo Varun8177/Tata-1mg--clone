@@ -10,8 +10,9 @@ const userLogin = (payload) => async (dispatch) => {
     const { data } = response;
     localStorage.setItem("token", data.token);
     dispatch({ type: types.USER_LOGIN, payload: data });
+    payload.signinSuccess();
   } catch (error) {
-    console.log(error);
+    payload.signinFail();
   }
 };
 
@@ -19,21 +20,10 @@ const userRegister = (payload) => async (dispatch) => {
   try {
     payload.location = "Maharashtra";
     payload.role = "user";
-    const res = await axios.post(
-      "https://black-skirt.cyclic.app/users/register",
-      payload
-    );
-    if (res.data) {
-      const login = await axios.post(
-        "https://black-skirt.cyclic.app/users/login",
-        { email: payload.email, password: payload.password }
-      );
-      localStorage.setItem("token", login.data.token);
-      dispatch({ type: types.USER_REGISTER, payload: login.data });
-      console.log(login.data);
-    }
+    await axios.post("https://black-skirt.cyclic.app/users/register", payload);
+    payload.signupSuccess();
   } catch (err) {
-    console.log(err);
+    payload.signupFail();
   }
 };
 
@@ -46,7 +36,6 @@ const userStatusUpdate = () => async (dispatch) => {
   });
   const res = await login.json();
   dispatch({ type: types.USER_STATUS_UPDATE, payload: res });
-  console.log("validation", res);
 };
 
 const userLogout = () => (dispatch) => {

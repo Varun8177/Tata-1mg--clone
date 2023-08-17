@@ -32,26 +32,42 @@ export default function SignInCard() {
   const [load, setLoad] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = () => {
+  const signinSuccess = () => {
+    toast({
+      title: "sign-in Successfull",
+      description: `welcome back`,
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+    dispatch(getCartData());
+    dispatch(userStatusUpdate());
+    setLoad(false);
+  };
+
+  const signinFail = () => {
+    toast({
+      title: "something went wrong",
+      description: `Login attempt was failed`,
+      status: "error",
+      duration: 3000,
+      isClosable: true,
+    });
+    setLoad(false);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
     setLoad(true);
-    try {
-      dispatch(userLogin({ email: loginEmail, password: loginPass }))
-        .then(() => {
-          toast({
-            title: "sign-in Successfull",
-            description: `welcome back`,
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
-        })
-        .then(() => {
-          dispatch(getCartData());
-          dispatch(userStatusUpdate());
-        });
-    } catch (e) {
-      console.log(e);
-    }
+    toast.closeAll();
+    dispatch(
+      userLogin({
+        email: loginEmail,
+        password: loginPass,
+        signinSuccess,
+        signinFail,
+      })
+    );
   };
   return (
     <Flex
@@ -78,60 +94,65 @@ export default function SignInCard() {
           boxShadow={"lg"}
           p={8}
         >
-          <Stack spacing={4}>
-            <Box>
-              <Center>
-                <Heading>Sign In</Heading>
-              </Center>
-            </Box>
-            <HStack></HStack>
-            <FormControl id="email" isRequired>
-              <FormLabel>Email address</FormLabel>
-              <Input
-                type="email"
-                onChange={(e) => setLoginEmail(e.target.value)}
-              />
-            </FormControl>
-            <FormControl id="password" isRequired>
-              <FormLabel>Password</FormLabel>
-              <InputGroup>
+          <form onSubmit={handleLogin}>
+            <Stack spacing={4}>
+              <Box>
+                <Center>
+                  <Heading>Sign In</Heading>
+                </Center>
+              </Box>
+              <HStack></HStack>
+              <FormControl id="email" isRequired>
+                <FormLabel>Email address</FormLabel>
                 <Input
-                  type={showPassword ? "text" : "password"}
-                  onChange={(e) => setLoginPass(e.target.value)}
+                  type="email"
+                  onChange={(e) => setLoginEmail(e.target.value)}
                 />
-                <InputRightElement h={"full"}>
-                  <Button
-                    variant={"ghost"}
-                    onClick={() =>
-                      setShowPassword((showPassword) => !showPassword)
-                    }
-                  >
-                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-            </FormControl>
-            <Stack spacing={10} pt={2}>
-              <Button
-                isLoading={load}
-                loadingText="Submitting"
-                size="lg"
-                color={"white"}
-                bg={"#ff6f61"}
-                _hover={{
-                  bg: "#fd7c70",
-                }}
-                onClick={handleLogin}
-              >
-                Login
-              </Button>
+              </FormControl>
+              <FormControl id="password" isRequired>
+                <FormLabel>Password</FormLabel>
+                <InputGroup>
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    onChange={(e) => setLoginPass(e.target.value)}
+                  />
+                  <InputRightElement h={"full"}>
+                    <Button
+                      variant={"ghost"}
+                      onClick={() =>
+                        setShowPassword((showPassword) => !showPassword)
+                      }
+                    >
+                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+              </FormControl>
+              <Stack spacing={10} pt={2}>
+                <Button
+                  isLoading={load}
+                  loadingText="Submitting"
+                  size="lg"
+                  color={"white"}
+                  bg={"#ff6f61"}
+                  _hover={{
+                    bg: "#fd7c70",
+                  }}
+                  type="submit"
+                >
+                  Login
+                </Button>
+              </Stack>
+              <Stack pt={6}>
+                <Text align={"center"}>
+                  New user?{" "}
+                  <Link href="#" color={"blue.400"}>
+                    Signup
+                  </Link>
+                </Text>
+              </Stack>
             </Stack>
-            <Stack pt={6}>
-              <Text align={"center"}>
-                New user? <Link color={"blue.400"}>Signup</Link>
-              </Text>
-            </Stack>
-          </Stack>
+          </form>
         </Box>
       </Stack>
     </Flex>
